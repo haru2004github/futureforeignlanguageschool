@@ -6,12 +6,12 @@
     
     <!-- Premium SEO & Home Tags -->
     <title>Success Stories - FUTURE Foreign Language School</title>
-    <meta name="description" content="Explore the success stories, COE approvals, and student life at FUTURE Foreign Language School. Your journey to Japan starts here.">
+    <meta name="description" content="View the success stories, COE approvals, and student life at FUTURE Foreign Language School.">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Google Fonts: Inter, Poppins, Padauk -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@500;600;700;800&family=Padauk:wght@400;700&display=swap" rel="stylesheet">
@@ -29,75 +29,53 @@
                     },
                     colors: {
                         primary: {
-                            50: '#eff6ff',
-                            100: '#dbeafe',
-                            500: '#3b82f6',
-                            600: '#2563eb',
-                            800: '#1e40af',
-                            900: '#1e3a8a', // Brand Blue
-                            950: '#172554',
+                            50: '#eff6ff', 100: '#dbeafe', 500: '#3b82f6', 600: '#2563eb', 800: '#1e40af', 900: '#1e3a8a', 950: '#172554',
                         }
                     },
                     boxShadow: {
                         'soft': '0 20px 40px -15px rgba(0,0,0,0.05)',
-                        'glow': '0 0 20px rgba(59, 130, 246, 0.5)',
+                        'card': '0 10px 30px -10px rgba(0,0,0,0.08)',
                     }
                 }
             }
         }
     </script>
     <style>
-        body {
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-        .glass-nav {
-            background: rgba(255, 255, 255, 0.92);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-        }
+        body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+        .glass-nav { background: rgba(255, 255, 255, 0.92); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
         .hero-bg-stories {
-            background-image: linear-gradient(to right, rgba(30, 58, 138, 0.95), rgba(23, 37, 84, 0.85)), url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=2070&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
+            background-image: linear-gradient(to right, rgba(30, 58, 138, 0.95), rgba(23, 37, 84, 0.85)), url('https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?q=80&w=2049&auto=format&fit=crop');
+            background-size: cover; background-position: center;
         }
         
+        /* Masonry Grid Setup */
+        .masonry-grid {
+            column-count: 1;
+            column-gap: 1.5rem;
+        }
+        @media (min-width: 640px) { .masonry-grid { column-count: 2; } }
+        @media (min-width: 1024px) { .masonry-grid { column-count: 3; } }
+        .masonry-item { break-inside: avoid; margin-bottom: 1.5rem; }
+
+        /* Gallery Filter Logic */
+        .gallery-item { transition: all 0.4s ease; }
+        .hidden-item { display: none; opacity: 0; transform: scale(0.9); }
+        .active-tab { background-color: #1e3a8a !important; color: white !important; border-color: #1e3a8a !important; }
+
         /* LANGUAGE SWITCHER CSS LOGIC */
         :lang(en) .mm-content { display: none !important; }
         :lang(mm) .en-content { display: none !important; }
-        
-        .en-content, .mm-content {
-            animation: fadeIn 0.4s ease-in-out;
-        }
-        
-        /* Gallery Image Hover Effect */
-        .gallery-item-inner {
-            transition: all 0.5s ease;
-        }
-        .gallery-item:hover .gallery-item-inner {
-            transform: scale(1.05);
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(5px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes scaleIn {
-            from { opacity: 0; transform: scale(0.95); }
-            to { opacity: 1; transform: scale(1); }
-        }
-        .gallery-visible {
-            animation: scaleIn 0.4s ease-out forwards;
-        }
+        .en-content, .mm-content { animation: fadeIn 0.4s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
-<body class="font-sans text-gray-600 bg-gray-50/30">
+<body class="font-sans text-gray-600 bg-gray-50/50">
 
+    <!-- Header / Navbar -->
     <nav class="fixed w-full z-50 glass-nav border-b border-gray-100 transition-all duration-300" id="navbar">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
-                
-                <!-- Brand Logo & Name -->
+                <!-- Brand -->
                 <a href="index.html" class="flex-shrink-0 flex items-center gap-3 group">
                     <div class="w-12 h-12 bg-primary-900 rounded-xl flex items-center justify-center text-white font-heading font-bold text-2xl shadow-md transition-transform group-hover:scale-105">
                         F<span class="text-blue-400">*</span>
@@ -108,265 +86,171 @@
                     </div>
                 </a>
 
-                <!-- Desktop Navigation -->
+                <!-- Desktop Nav -->
                 <div class="hidden lg:flex items-center space-x-6 xl:space-x-8">
-                    <a href="index.html" class="text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors">
-                        <span class="en-content">Home</span>
-                        <span class="mm-content">ပင်မစာမျက်နှာ</span>
-                    </a>
-                    <a href="about.html" class="text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors">
-                        <span class="en-content">About Us</span>
-                        <span class="mm-content">ကျောင်းအကြောင်း</span>
-                    </a>
-                    <a href="programs.html" class="text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors">
-                        <span class="en-content">Programs</span>
-                        <span class="mm-content">သင်တန်းများ</span>
-                    </a>
-                    <a href="stories.html" class="text-sm font-medium text-primary-600 transition-colors">
-                        <span class="en-content">Success Stories</span>
-                        <span class="mm-content">အောင်မြင်မှုများ</span>
-                    </a>
+                    <a href="index.html" class="text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors"><span class="en-content">Home</span><span class="mm-content">ပင်မစာမျက်နှာ</span></a>
+                    <a href="about.html" class="text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors"><span class="en-content">About Us</span><span class="mm-content">ကျောင်းအကြောင်း</span></a>
+                    <a href="programs.html" class="text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors"><span class="en-content">Programs</span><span class="mm-content">သင်တန်းများ</span></a>
+                    <a href="stories.html" class="text-sm font-medium text-primary-600 transition-colors"><span class="en-content">Success Stories</span><span class="mm-content">အောင်မြင်မှုများ</span></a>
+                    <a href="contact.html" class="text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors"><span class="en-content">Contact</span><span class="mm-content">ဆက်သွယ်ရန်</span></a>
                     
                     <div class="pl-6 border-l border-gray-200 flex items-center space-x-4">
-                        <!-- Desktop Language Toggle -->
                         <button onclick="toggleLanguage()" class="flex items-center space-x-2 text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors bg-gray-100 hover:bg-gray-200 px-3 py-1.5 rounded-full">
                             <i class="fa-solid fa-language text-lg text-primary-600"></i>
-                            <span class="en-content">မြန်မာဘာသာ</span>
-                            <span class="mm-content">English</span>
+                            <span class="en-content">မြန်မာဘာသာ</span><span class="mm-content">English</span>
                         </button>
-
-                        <!-- CTA Button -->
-                        <a href="index.html#contact" class="inline-flex items-center justify-center px-6 py-2.5 border border-transparent text-sm font-medium rounded-lg text-white bg-primary-600 hover:bg-primary-700 shadow-md hover:shadow-lg transition-all active:scale-95">
-                            <span class="en-content">Apply Now</span>
-                            <span class="mm-content">စုံစမ်းမည်</span>
+                        <a href="contact.html" class="bg-primary-600 text-white px-5 py-2.5 rounded-lg text-sm font-semibold hover:bg-primary-700 hover:shadow-lg transition-all active:scale-95">
+                            <span class="en-content">Call Us</span><span class="mm-content">စုံစမ်းမည်</span>
                         </a>
                     </div>
                 </div>
 
-                <!-- Mobile Menu & Lang Button -->
+                <!-- Mobile Nav Toggle -->
                 <div class="lg:hidden flex items-center space-x-3">
                     <button onclick="toggleLanguage()" class="text-gray-600 bg-gray-100 p-2 rounded-full w-9 h-9 flex items-center justify-center hover:bg-gray-200">
                         <i class="fa-solid fa-language text-lg text-primary-600"></i>
                     </button>
-                    <button id="mobile-menu-btn" class="text-gray-600 hover:text-primary-900 focus:outline-none p-2 transition-colors">
+                    <button id="mobile-menu-btn" class="text-gray-600 focus:outline-none p-2">
                         <i class="fa-solid fa-bars text-2xl"></i>
                     </button>
                 </div>
             </div>
         </div>
 
-        <!-- Mobile Navigation Menu -->
+        <!-- Mobile Menu -->
         <div id="mobile-menu" class="lg:hidden hidden bg-white border-t border-gray-100 shadow-2xl absolute w-full transition-all">
             <div class="px-4 pt-4 pb-8 space-y-2 flex flex-col">
-                <a href="index.html" class="mobile-link block px-4 py-3 rounded-lg text-base font-medium text-gray-700 hover:bg-primary-50 hover:text-primary-700 transition-colors">
-                    <span class="en-content">Home</span><span class="mm-content">ပင်မစာမျက်နှာ</span>
+                <a href="index.html" class="block px-4 py-3 rounded-lg text-base font-medium text-gray-700 hover:bg-primary-50"><span class="en-content">Home</span><span class="mm-content">ပင်မစာမျက်နှာ</span></a>
+                <a href="about.html" class="block px-4 py-3 rounded-lg text-base font-medium text-gray-700 hover:bg-primary-50"><span class="en-content">About Us</span><span class="mm-content">ကျောင်းအကြောင်း</span></a>
+                <a href="programs.html" class="block px-4 py-3 rounded-lg text-base font-medium text-gray-700 hover:bg-primary-50"><span class="en-content">Programs</span><span class="mm-content">သင်တန်းများ</span></a>
+                <a href="stories.html" class="block px-4 py-3 rounded-lg text-base font-medium text-primary-700 bg-primary-50"><span class="en-content">Success Stories</span><span class="mm-content">အောင်မြင်မှုများ</span></a>
+                <a href="contact.html" class="block px-4 py-3 rounded-lg text-base font-medium text-gray-700 hover:bg-primary-50"><span class="en-content">Contact</span><span class="mm-content">ဆက်သွယ်ရန်</span></a>
+                <a href="contact.html" class="block px-4 py-3 mt-4 text-center rounded-lg text-base font-bold text-white bg-primary-600 hover:bg-primary-700">
+                    <span class="en-content">Call Us</span><span class="mm-content">စုံစမ်းမည်</span>
                 </a>
-                <a href="about.html" class="mobile-link block px-4 py-3 rounded-lg text-base font-medium text-gray-700 hover:bg-primary-50 hover:text-primary-700 transition-colors">
-                    <span class="en-content">About Us</span><span class="mm-content">ကျောင်းအကြောင်း</span>
-                </a>
-                <a href="programs.html" class="mobile-link block px-4 py-3 rounded-lg text-base font-medium text-gray-700 hover:bg-primary-50 hover:text-primary-700 transition-colors">
-                    <span class="en-content">Programs</span><span class="mm-content">သင်တန်းများ</span>
-                </a>
-                <a href="stories.html" class="mobile-link block px-4 py-3 rounded-lg text-base font-medium text-primary-700 bg-primary-50 transition-colors">
-                    <span class="en-content">Success Stories</span><span class="mm-content">အောင်မြင်မှုများ</span>
-                </a>
-                <div class="pt-4 mt-2 border-t border-gray-100">
-                    <a href="index.html#contact" class="mobile-link w-full text-center block px-4 py-3.5 rounded-lg text-base font-semibold text-white bg-primary-600 hover:bg-primary-700 shadow-md transition-colors">
-                        <span class="en-content">Apply Now</span><span class="mm-content">ယခုပဲ စုံစမ်းမည်</span>
-                    </a>
-                </div>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 hero-bg-stories overflow-hidden flex items-center">
+    <section class="relative pt-32 pb-20 lg:pt-40 lg:pb-24 hero-bg-stories overflow-hidden flex items-center">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full text-center">
-            <span class="inline-flex items-center px-4 py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-md mb-6 shadow-soft">
-                <span class="flex h-2 w-2 rounded-full bg-green-400 mr-2 shadow-glow animate-pulse"></span>
-                <span class="text-xs font-semibold text-blue-50 uppercase tracking-widest">
-                    <span class="en-content">Proven Results</span>
-                    <span class="mm-content">ခိုင်မာသော ရလဒ်များ</span>
-                </span>
-            </span>
-            <h1 class="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-white leading-[1.2] mb-6 tracking-tight max-w-4xl mx-auto">
-                <span class="en-content">Our <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-blue-100">Success Stories.</span></span>
-                <span class="mm-content">ဂုဏ်ယူဖွယ် <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-blue-100">အောင်မြင်မှုမှတ်တမ်းများ။</span></span>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-white leading-[1.2] mb-6 tracking-tight">
+                <span class="en-content">Success <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-blue-100">Stories.</span></span>
+                <span class="mm-content">FUTURE ၏ <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-blue-100">အောင်မြင်မှုများ။</span></span>
             </h1>
-            <p class="text-lg md:text-xl text-blue-100/90 max-w-2xl mx-auto leading-relaxed font-light">
-                <span class="en-content">Witness the journey of our students. From dynamic classrooms in Myanmar to securing their COE and arriving in Japan.</span>
-                <span class="mm-content">ကျောင်းတွင်း လှုပ်ရှားမှုများမှသည် ဂျပန်ကျောင်းများ၏ တရားဝင်ခွင့်ပြုချက် (COE) ရရှိသည်အထိ ကျောင်းသားများ၏ အောင်မြင်မှုများကို လေ့လာကြည့်ရှုနိုင်ပါသည်။</span>
+            <p class="text-lg text-blue-100/90 max-w-2xl mx-auto leading-relaxed font-light">
+                <span class="en-content">Explore the achievements of our students. From COE approvals to vibrant student life, see the results of dedication and expert guidance.</span>
+                <span class="mm-content">FUTURE ကျောင်းသားများ၏ ဂျပန်နိုင်ငံသို့ အမှန်တကယ် သွားရောက်ခွင့်ရရှိထားသော COE အထောက်အထားများနှင့် ကျောင်းတွင်း လှုပ်ရှားမှုပုံရိပ်များ။</span>
             </p>
         </div>
-        <div class="absolute bottom-0 left-0 w-full h-16 bg-gradient-to-t from-gray-50/30 to-transparent"></div>
     </section>
 
     <!-- Gallery Section -->
-    <section class="py-16 lg:py-24 relative bg-gray-50/50">
+    <section class="py-16 lg:py-24 bg-gray-50 min-h-screen">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             
-            <!-- Gallery Filters -->
-            <div class="flex flex-wrap justify-center gap-3 md:gap-4 mb-16">
-                <button onclick="filterGallery('all')" class="filter-btn active-filter px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 bg-primary-600 text-white shadow-md border border-transparent">
-                    <span class="en-content">All Photos</span>
-                    <span class="mm-content">အားလုံးပြရန်</span>
+            <!-- Filter Controls -->
+            <div class="flex flex-wrap justify-center gap-3 mb-12">
+                <button class="filter-btn active-tab px-6 py-2 rounded-full border border-gray-200 bg-white text-gray-700 font-medium text-sm transition-all hover:bg-gray-100" data-filter="all">
+                    <span class="en-content">All Photos</span><span class="mm-content">ဓာတ်ပုံအားလုံး</span>
                 </button>
-                <button onclick="filterGallery('coe')" class="filter-btn px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 bg-white text-gray-600 border border-gray-200 hover:border-primary-300 hover:text-primary-600 shadow-sm">
-                    <i class="fa-solid fa-file-signature mr-2"></i>
-                    <span class="en-content">COE Approved</span>
-                    <span class="mm-content">ဗီဇာအောင်မြင်မှုများ</span>
+                <button class="filter-btn px-6 py-2 rounded-full border border-gray-200 bg-white text-gray-700 font-medium text-sm transition-all hover:bg-gray-100" data-filter="coe">
+                    <span class="en-content">COE Approvals</span><span class="mm-content">ဗီဇာအောင်မြင်မှုများ (COE)</span>
                 </button>
-                <button onclick="filterGallery('life')" class="filter-btn px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 bg-white text-gray-600 border border-gray-200 hover:border-primary-300 hover:text-primary-600 shadow-sm">
-                    <i class="fa-solid fa-users mr-2"></i>
-                    <span class="en-content">Student Life</span>
-                    <span class="mm-content">ကျောင်းတွင်းလှုပ်ရှားမှု</span>
-                </button>
-                <button onclick="filterGallery('japan')" class="filter-btn px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 bg-white text-gray-600 border border-gray-200 hover:border-primary-300 hover:text-primary-600 shadow-sm">
-                    <i class="fa-solid fa-plane-arrival mr-2"></i>
-                    <span class="en-content">In Japan</span>
-                    <span class="mm-content">ဂျပန်ရောက် မှတ်တမ်းများ</span>
+                <button class="filter-btn px-6 py-2 rounded-full border border-gray-200 bg-white text-gray-700 font-medium text-sm transition-all hover:bg-gray-100" data-filter="life">
+                    <span class="en-content">Student Life</span><span class="mm-content">ကျောင်းတွင်း လှုပ်ရှားမှု</span>
                 </button>
             </div>
 
-            <!-- Gallery Grid -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" id="gallery-grid">
+            <!-- Masonry Grid -->
+            <div class="masonry-grid" id="gallery-container">
                 
-                <!-- COE Item 1 -->
-                <div class="gallery-item group relative bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden" data-category="coe">
-                    <div class="absolute top-4 right-4 z-10 bg-green-500/90 backdrop-blur-sm text-white px-3 py-1 rounded-full text-xs font-bold shadow-md">
-                        <i class="fa-solid fa-check mr-1"></i> Approved
-                    </div>
-                    <div class="h-80 overflow-hidden bg-gray-100 flex items-center justify-center p-4">
-                        <img src="image_e5fc9b.jpg" alt="COE Approval ISI Language School" onerror="this.src='https://placehold.co/600x800/e2e8f0/1e3a8a?text=Official+COE'" class="gallery-item-inner w-full h-full object-contain mix-blend-multiply">
-                    </div>
-                    <div class="p-5 border-t border-gray-50">
-                        <h3 class="font-heading font-bold text-gray-900 text-lg">ISI Language School, Osaka</h3>
-                        <p class="text-sm text-gray-500 mt-1">
-                            <span class="en-content">Official COE Document Approved</span>
-                            <span class="mm-content">တရားဝင် COE အောင်မြင်မှု မှတ်တမ်း</span>
-                        </p>
+                <!-- COE Images (Approval Proofs) -->
+                <div class="masonry-item gallery-item coe">
+                    <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 group">
+                        <div class="relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1589330694653-efa6475304af?q=80&w=800&auto=format&fit=crop" onerror="this.src='https://placehold.co/600x800/eff6ff/1e3a8a?text=COE+Document'" alt="COE Approval - Pwint Thuzar Aung" class="w-full h-auto transform group-hover:scale-105 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-gray-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                                <span class="text-white font-bold text-sm">Pwint Thuzar Aung</span>
+                                <span class="text-blue-200 font-medium text-xs mt-1">ISI Language School, Osaka</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- COE Item 2 -->
-                <div class="gallery-item group relative bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden" data-category="coe">
-                    <div class="absolute top-4 right-4 z-10 bg-green-500/90 backdrop-blur-sm text-white px-3 py-1 rounded-full text-xs font-bold shadow-md">
-                        <i class="fa-solid fa-check mr-1"></i> Approved
-                    </div>
-                    <div class="h-80 overflow-hidden bg-gray-100 flex items-center justify-center p-4">
-                        <img src="image_e5fc99.jpg" alt="COE Approval Grandeur Global Academy" onerror="this.src='https://placehold.co/600x800/e2e8f0/1e3a8a?text=Official+COE'" class="gallery-item-inner w-full h-full object-contain mix-blend-multiply">
-                    </div>
-                    <div class="p-5 border-t border-gray-50">
-                        <h3 class="font-heading font-bold text-gray-900 text-lg">Grandeur Global Academy</h3>
-                        <p class="text-sm text-gray-500 mt-1">
-                            <span class="en-content">Official COE Document Approved</span>
-                            <span class="mm-content">တရားဝင် COE အောင်မြင်မှု မှတ်တမ်း</span>
-                        </p>
+                <div class="masonry-item gallery-item coe">
+                    <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 group">
+                        <div class="relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=800&auto=format&fit=crop" onerror="this.src='https://placehold.co/600x800/eff6ff/1e3a8a?text=COE+Document'" alt="COE Approval - Thin Zar Aung" class="w-full h-auto transform group-hover:scale-105 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-gray-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                                <span class="text-white font-bold text-sm">Thin Zar Aung</span>
+                                <span class="text-blue-200 font-medium text-xs mt-1">ISI Language School, Osaka</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- COE Item 3 -->
-                <div class="gallery-item group relative bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden" data-category="coe">
-                    <div class="absolute top-4 right-4 z-10 bg-green-500/90 backdrop-blur-sm text-white px-3 py-1 rounded-full text-xs font-bold shadow-md">
-                        <i class="fa-solid fa-check mr-1"></i> Approved
-                    </div>
-                    <div class="h-80 overflow-hidden bg-gray-100 flex items-center justify-center p-4">
-                        <img src="image_e5fc96.jpg" alt="COE Approval" onerror="this.src='https://placehold.co/600x800/e2e8f0/1e3a8a?text=Official+COE'" class="gallery-item-inner w-full h-full object-contain mix-blend-multiply">
-                    </div>
-                    <div class="p-5 border-t border-gray-50">
-                        <h3 class="font-heading font-bold text-gray-900 text-lg">ISI Language School</h3>
-                        <p class="text-sm text-gray-500 mt-1">
-                            <span class="en-content">Official COE Document Approved</span>
-                            <span class="mm-content">တရားဝင် COE အောင်မြင်မှု မှတ်တမ်း</span>
-                        </p>
+                <div class="masonry-item gallery-item coe">
+                    <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 group">
+                        <div class="relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1606326608606-aa0b62935f2b?q=80&w=800&auto=format&fit=crop" onerror="this.src='https://placehold.co/600x800/eff6ff/1e3a8a?text=COE+Document'" alt="COE Approval - Saw Yu Nandar" class="w-full h-auto transform group-hover:scale-105 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-gray-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                                <span class="text-white font-bold text-sm">Saw Yu Nandar</span>
+                                <span class="text-blue-200 font-medium text-xs mt-1">Grandeur Global Academy</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Student Life Item 1 -->
-                <div class="gallery-item group relative bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden" data-category="life">
-                    <div class="h-80 overflow-hidden bg-gray-100">
-                        <img src="image_e5fba5.jpg" alt="Students Group Photo" onerror="this.src='https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=2070&auto=format&fit=crop'" class="gallery-item-inner w-full h-full object-cover">
-                        <!-- Overlay gradient on hover -->
-                        <div class="absolute inset-0 bg-gradient-to-t from-primary-900/80 via-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    </div>
-                    <div class="p-5 border-t border-gray-50 absolute bottom-0 left-0 w-full translate-y-full group-hover:translate-y-0 transition-transform duration-300 bg-white/95 backdrop-blur-sm">
-                        <h3 class="font-heading font-bold text-gray-900 text-lg">
-                            <span class="en-content">Dynamic Team</span><span class="mm-content">ကျောင်းသားများ၏ စည်းလုံးမှု</span>
-                        </h3>
-                        <p class="text-sm text-gray-500 mt-1">
-                            <span class="en-content">Building friendships and futures together.</span>
-                            <span class="mm-content">အနာဂတ်အတွက် အတူတူကြိုးစားနေကြသူများ။</span>
-                        </p>
+                <!-- Student Life Images (Group Photos & Activities) -->
+                <div class="masonry-item gallery-item life">
+                    <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 group">
+                        <div class="relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1577563908411-5077b6dc7624?q=80&w=800&auto=format&fit=crop" onerror="this.src='https://placehold.co/800x600/eff6ff/1e3a8a?text=Classroom'" alt="Student Life - Uniforms" class="w-full h-auto transform group-hover:scale-105 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-primary-900/20 group-hover:bg-transparent transition-colors duration-300"></div>
+                        </div>
+                        <div class="p-4 bg-white">
+                            <p class="text-sm font-medium text-gray-900">
+                                <span class="en-content">Classroom & Uniforms</span><span class="mm-content">စာသင်ခန်းအတွင်း မှတ်တမ်း</span>
+                            </p>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Student Life Item 2 -->
-                <div class="gallery-item group relative bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden" data-category="life">
-                    <div class="h-80 overflow-hidden bg-gray-100">
-                        <img src="image_e5fba1.jpg" alt="Classroom Environment" onerror="this.src='https://images.unsplash.com/photo-1577896851231-70ef18881754?q=80&w=2070&auto=format&fit=crop'" class="gallery-item-inner w-full h-full object-cover">
-                        <!-- Overlay gradient on hover -->
-                        <div class="absolute inset-0 bg-gradient-to-t from-primary-900/80 via-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    </div>
-                    <div class="p-5 border-t border-gray-50 absolute bottom-0 left-0 w-full translate-y-full group-hover:translate-y-0 transition-transform duration-300 bg-white/95 backdrop-blur-sm">
-                        <h3 class="font-heading font-bold text-gray-900 text-lg">
-                            <span class="en-content">Interactive Classes</span><span class="mm-content">တက်ကြွသော စာသင်ခန်း</span>
-                        </h3>
-                        <p class="text-sm text-gray-500 mt-1">
-                            <span class="en-content">Focused learning with experienced teachers.</span>
-                            <span class="mm-content">ဝါရင့်ဆရာမများနှင့် စနစ်တကျ သင်ယူနေမှု။</span>
-                        </p>
+                <div class="masonry-item gallery-item life">
+                    <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 group">
+                        <div class="relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1523580494112-071d162112e2?q=80&w=800&auto=format&fit=crop" onerror="this.src='https://placehold.co/800x600/eff6ff/1e3a8a?text=Outdoor+Trip'" alt="Student Life - Outdoor" class="w-full h-auto transform group-hover:scale-105 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-primary-900/20 group-hover:bg-transparent transition-colors duration-300"></div>
+                        </div>
+                        <div class="p-4 bg-white">
+                            <p class="text-sm font-medium text-gray-900">
+                                <span class="en-content">Outdoor Trip & Bonding</span><span class="mm-content">ကျောင်းသားများ၏ ပျော်ပွဲစားခရီး</span>
+                            </p>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Japan Item 1 (Placeholder for future) -->
-                <div class="gallery-item group relative bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden" data-category="japan">
-                    <div class="h-80 overflow-hidden bg-gray-100">
-                        <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?q=80&w=2070&auto=format&fit=crop" alt="Students in Japan" class="gallery-item-inner w-full h-full object-cover">
-                    </div>
-                    <div class="p-5 border-t border-gray-50 absolute bottom-0 left-0 w-full translate-y-full group-hover:translate-y-0 transition-transform duration-300 bg-white/95 backdrop-blur-sm">
-                        <h3 class="font-heading font-bold text-gray-900 text-lg">
-                            <span class="en-content">Arrived in Tokyo</span><span class="mm-content">တိုကျိုမြို့သို့ ရောက်ရှိခြင်း</span>
-                        </h3>
-                        <p class="text-sm text-gray-500 mt-1">
-                            <span class="en-content">Starting the new chapter in Japan.</span>
-                            <span class="mm-content">ဂျပန်နိုင်ငံတွင် ဘဝစာမျက်နှာသစ် စတင်နေပြီဖြစ်သည်။</span>
-                        </p>
+                <div class="masonry-item gallery-item life">
+                    <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 group">
+                        <div class="relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1511629091441-ee46146481b6?q=80&w=800&auto=format&fit=crop" onerror="this.src='https://placehold.co/800x600/eff6ff/1e3a8a?text=School+Events'" alt="Student Life - Events" class="w-full h-auto transform group-hover:scale-105 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-primary-900/20 group-hover:bg-transparent transition-colors duration-300"></div>
+                        </div>
+                        <div class="p-4 bg-white">
+                            <p class="text-sm font-medium text-gray-900">
+                                <span class="en-content">School Events & Orientation</span><span class="mm-content">ကျောင်းတွင်း အခမ်းအနားများ</span>
+                            </p>
+                        </div>
                     </div>
                 </div>
 
             </div>
-            
-            <!-- Empty State Message (Hidden by default) -->
-            <div id="empty-state" class="hidden text-center py-20">
-                <div class="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center text-gray-400 text-3xl mx-auto mb-4">
-                    <i class="fa-regular fa-images"></i>
-                </div>
-                <h3 class="text-lg font-bold text-gray-900 mb-2">More photos coming soon</h3>
-                <p class="text-gray-500">We are constantly updating our gallery with new success stories.</p>
-            </div>
-
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="py-20 bg-primary-900 relative overflow-hidden">
-        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
-        <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
-            <h2 class="font-heading text-3xl md:text-4xl font-bold text-white mb-6">
-                <span class="en-content">Ready to be our next success story?</span>
-                <span class="mm-content">နောက်ထပ် အောင်မြင်မည့်သူ သင်ဖြစ်လာနိုင်ပါပြီ</span>
-            </h2>
-            <p class="text-blue-100 text-lg mb-8 max-w-2xl mx-auto">
-                <span class="en-content">Join our intensive programs and let us guide you step-by-step to your destination in Japan.</span>
-                <span class="mm-content">FUTURE ကျောင်းနှင့် လက်တွဲပြီး သင့်ရဲ့ ဂျပန်အိပ်မက်ကို ယခုပဲ အကောင်အထည်ဖော်လိုက်ပါ။</span>
-            </p>
-            <a href="index.html#contact" class="inline-flex items-center justify-center px-8 py-4 text-primary-900 bg-white font-bold rounded-xl hover:bg-gray-50 transition-all shadow-xl hover:-translate-y-1">
-                <span class="en-content">Start Your Application</span>
-                <span class="mm-content">ယခုပဲ စုံစမ်းမည်</span>
-            </a>
-        </div>
-    </section>
-
+    <!-- Footer -->
     <footer class="bg-white pt-24 pb-12 border-t border-gray-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 mb-16">
@@ -379,8 +263,8 @@
                         <h3 class="font-heading text-2xl font-bold tracking-tight text-gray-900">FUTURE</h3>
                     </div>
                     <p class="text-gray-500 text-sm leading-relaxed mb-8">
-                        <span class="en-content">Empowering youth to take their next big step. We provide expert training in English, Japanese, and Korean to fast-track your journey abroad.</span>
-                        <span class="mm-content">လူငယ်များ၏ အနာဂတ် ခြေလှမ်းသစ်အတွက် English, Japan နှင့် Korea ဘာသာစကားများကို အကောင်းဆုံး သင်ကြားပေးနေသော ကျောင်းဖြစ်ပါသည်။</span>
+                        <span class="en-content">Established in 2016. Empowering youth to take their next big step. We provide expert training in Japanese to fast-track your journey abroad.</span>
+                        <span class="mm-content">၂၀၁၆ မှစ၍ လူငယ်များ၏ အနာဂတ် ခြေလှမ်းသစ်အတွက် Japan ဘာသာစကားများကို အကောင်းဆုံး သင်ကြားပေးနေသော ကျောင်းဖြစ်ပါသည်။</span>
                     </p>
                     <div class="flex space-x-4">
                         <a href="#" class="w-10 h-10 rounded-full bg-gray-50 border border-gray-200 flex items-center justify-center text-gray-600 hover:bg-primary-600 hover:text-white hover:border-transparent transition-all shadow-sm">
@@ -392,25 +276,38 @@
                     </div>
                 </div>
 
-                <div class="lg:col-span-4">
+                <div class="lg:col-span-2">
+                    <h4 class="font-heading text-lg font-bold mb-6 text-gray-900">
+                        <span class="en-content">Quick Links</span><span class="mm-content">လင့်ခ်များ</span>
+                    </h4>
+                    <ul class="space-y-4 text-sm text-gray-500">
+                        <li><a href="index.html" class="hover:text-primary-600 transition-colors"><span class="en-content">Home</span><span class="mm-content">ပင်မစာမျက်နှာ</span></a></li>
+                        <li><a href="about.html" class="hover:text-primary-600 transition-colors"><span class="en-content">About Us</span><span class="mm-content">ကျောင်းအကြောင်း</span></a></li>
+                        <li><a href="programs.html" class="hover:text-primary-600 transition-colors"><span class="en-content">Our Programs</span><span class="mm-content">သင်တန်းများ</span></a></li>
+                        <li><a href="stories.html" class="text-primary-600 font-medium"><span class="en-content">Success Stories</span><span class="mm-content">အောင်မြင်မှုများ</span></a></li>
+                        <li><a href="contact.html" class="hover:text-primary-600 transition-colors"><span class="en-content">Contact Us</span><span class="mm-content">ဆက်သွယ်ရန်</span></a></li>
+                    </ul>
+                </div>
+
+                <div class="lg:col-span-3">
                     <h4 class="font-heading text-lg font-bold mb-6 text-gray-900">
                         <span class="en-content">Contact Details</span><span class="mm-content">ဆက်သွယ်ရန်</span>
                     </h4>
                     <ul class="space-y-6 text-sm text-gray-600">
                         <li class="flex items-start">
-                            <div class="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-primary-600 mr-4 flex-shrink-0">
-                                <i class="fa-solid fa-location-dot"></i>
+                            <div class="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center text-primary-600 mr-3 flex-shrink-0 mt-0.5">
+                                <i class="fa-solid fa-location-dot text-xs"></i>
                             </div>
-                            <span class="leading-relaxed pt-2">
-                                <span class="en-content">No. 445, Myin Taw Thar Main Road,<br>3/Man Pyay Ward, Thaketa Township,<br>Yangon, Myanmar.</span>
+                            <span class="leading-relaxed">
+                                <span class="en-content">No. 445, Myin Taw Thar Main Road,<br>3/Man Pyay Ward, Thaketa Township,<br>Yangon.</span>
                                 <span class="mm-content">အမှတ် (၄၄၅)၊ မြင်တော်သာလမ်းမကြီး၊<br>၃/မာန်ပြေရပ်ကွက်၊ သာကေတမြို့နယ်၊<br>ရန်ကုန်မြို့။</span>
                             </span>
                         </li>
                         <li class="flex items-start">
-                            <div class="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-primary-600 mr-4 flex-shrink-0">
-                                <i class="fa-solid fa-phone"></i>
+                            <div class="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center text-primary-600 mr-3 flex-shrink-0 mt-0.5">
+                                <i class="fa-solid fa-phone text-xs"></i>
                             </div>
-                            <div class="flex flex-col space-y-1 pt-2 font-medium">
+                            <div class="flex flex-col space-y-1 font-medium">
                                 <a href="tel:01547106" class="hover:text-primary-600 transition-colors">01-547106</a>
                                 <a href="tel:09254109605" class="hover:text-primary-600 transition-colors">09-254109605</a>
                                 <a href="tel:09254006723" class="hover:text-primary-600 transition-colors">09-254006723</a>
@@ -419,31 +316,32 @@
                     </ul>
                 </div>
 
-                <div class="lg:col-span-4">
-                    <div class="bg-gray-50 rounded-2xl p-8 border border-gray-100 shadow-sm">
-                        <h4 class="font-heading text-lg font-bold mb-4 text-gray-900">
+                <div class="lg:col-span-3">
+                    <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100 shadow-sm">
+                        <h4 class="font-heading text-base font-bold mb-3 text-gray-900">
                             <span class="en-content">Ready to start?</span><span class="mm-content">စုံစမ်းလိုပါသလား?</span>
                         </h4>
-                        <p class="text-sm text-gray-500 mb-6">
-                            <span class="en-content">Head over to our homepage to fill out the registration form or contact us directly.</span>
-                            <span class="mm-content">သင်တန်းအပ်နှံရန်နှင့် အသေးစိတ်သိရှိလိုပါက ပင်မစာမျက်နှာရှိ ဖောင်တွင် ဖြည့်စွက်နိုင်ပါသည်။</span>
+                        <p class="text-sm text-gray-500 mb-5 leading-relaxed">
+                            <span class="en-content">We are ready to guide you to your future in Japan. Call us directly.</span>
+                            <span class="mm-content">သင်တန်းအပ်နှံရန်နှင့် အသေးစိတ်သိရှိလိုပါက ဖုန်းဖြင့် တိုက်ရိုက် ဆက်သွယ်နိုင်ပါသည်။</span>
                         </p>
-                        <a href="index.html#contact" class="w-full bg-primary-900 text-white font-semibold py-3.5 rounded-lg hover:bg-primary-950 transition-all text-sm shadow-md flex justify-center items-center active:scale-95">
-                            <span class="en-content">Go to Inquiry Form</span><span class="mm-content">ဖောင်ဖြည့်ရန် သွားမည်</span>
+                        <a href="contact.html" class="w-full bg-primary-900 text-white font-semibold py-3 rounded-lg hover:bg-primary-950 transition-all text-sm shadow-md flex justify-center items-center active:scale-95 gap-2">
+                            <i class="fa-solid fa-phone-volume text-sm"></i>
+                            <span class="en-content">Call Us Now</span><span class="mm-content">ဖုန်းဆက်စုံစမ်းမည်</span>
                         </a>
                     </div>
                 </div>
 
             </div>
             
-            <div class="border-t border-gray-100 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
+            <div class="border-t border-gray-100 pt-8 flex flex-col justify-center items-center text-sm text-gray-500 text-center">
                 <p>&copy; <script>document.write(new Date().getFullYear())</script> FUTURE Foreign Language School. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // --- Language Toggle Logic ---
+        // Language Toggle Logic
         function toggleLanguage() {
             const htmlTag = document.documentElement;
             if (htmlTag.getAttribute('lang') === 'en') {
@@ -455,7 +353,6 @@
             }
         }
 
-        // Check preference on load
         document.addEventListener('DOMContentLoaded', () => {
             const savedLang = localStorage.getItem('preferredLanguage');
             if (savedLang) {
@@ -463,7 +360,7 @@
             }
         });
 
-        // --- Mobile Menu Logic ---
+        // Mobile Menu Logic
         const btn = document.getElementById('mobile-menu-btn');
         const menu = document.getElementById('mobile-menu');
         const icon = btn.querySelector('i');
@@ -474,7 +371,7 @@
             icon.classList.toggle('fa-xmark');
         });
 
-        // --- Navbar Scroll Effect ---
+        // Navbar Scroll
         window.addEventListener('scroll', () => {
             const nav = document.getElementById('navbar');
             if (window.scrollY > 20) {
@@ -486,49 +383,28 @@
             }
         });
 
-        // --- Gallery Filter Logic ---
-        function filterGallery(category) {
-            const items = document.querySelectorAll('.gallery-item');
-            const buttons = document.querySelectorAll('.filter-btn');
-            let visibleCount = 0;
+        // Gallery Filter Logic
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const galleryItems = document.querySelectorAll('.gallery-item');
 
-            // Update Button Styles
-            buttons.forEach(btn => {
-                // If it's the clicked button
-                if (btn.getAttribute('onclick').includes(category)) {
-                    btn.classList.remove('bg-white', 'text-gray-600', 'border-gray-200');
-                    btn.classList.add('bg-primary-600', 'text-white', 'border-transparent');
-                } else {
-                    // Reset other buttons
-                    btn.classList.add('bg-white', 'text-gray-600', 'border-gray-200');
-                    btn.classList.remove('bg-primary-600', 'text-white', 'border-transparent');
-                }
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterBtns.forEach(b => b.classList.remove('active-tab'));
+                // Add active class to clicked button
+                btn.classList.add('active-tab');
+
+                const filterValue = btn.getAttribute('data-filter');
+
+                galleryItems.forEach(item => {
+                    if (filterValue === 'all' || item.classList.contains(filterValue)) {
+                        item.classList.remove('hidden-item');
+                    } else {
+                        item.classList.add('hidden-item');
+                    }
+                });
             });
-
-            // Filter Items
-            items.forEach(item => {
-                // Reset animation class
-                item.classList.remove('gallery-visible');
-                
-                if (category === 'all' || item.getAttribute('data-category') === category) {
-                    item.style.display = 'block';
-                    visibleCount++;
-                    // Trigger reflow to restart animation
-                    void item.offsetWidth;
-                    item.classList.add('gallery-visible');
-                } else {
-                    item.style.display = 'none';
-                }
-            });
-
-            // Show empty state if no images found
-            const emptyState = document.getElementById('empty-state');
-            if(visibleCount === 0) {
-                emptyState.classList.remove('hidden');
-            } else {
-                emptyState.classList.add('hidden');
-            }
-        }
+        });
     </script>
 </body>
 </html>
