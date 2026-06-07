@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <!-- Premium SEO & Home Tags -->
+    <title>Contact Us - FUTURE Foreign Language School</title>
+    <meta name="description" content="Get in touch with FUTURE Foreign Language School. Find our address in Thaketa, Yangon, phone numbers, and inquiry form.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter, Poppins, Padauk -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@500;600;700;800&family=Padauk:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'Padauk', 'sans-serif'],
+                        heading: ['Poppins', 'Padauk', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            800: '#1e40af',
+                            900: '#1e3a8a', // Brand Blue
+                            950: '#172554',
+                        }
+                    },
+                    boxShadow: {
+                        'soft': '0 20px 40px -15px rgba(0,0,0,0.05)',
+                        'card': '0 10px 30px -10px rgba(0,0,0,0.08)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .hero-bg-contact {
+            background-image: linear-gradient(to right, rgba(30, 58, 138, 0.95), rgba(23, 37, 84, 0.85)), url('https://images.unsplash.com/photo-1516321497487-e288fb19713f?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        /* LANGUAGE SWITCHER CSS LOGIC */
+        :lang(en) .mm-content { display: none !important; }
+        :lang(mm) .en-content { display: none !important; }
+        
+        .en-content, .mm-content {
+            animation: fadeIn 0.4s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-600 bg-gray-50/30">
+
+    <!-- Header / Navbar -->
+    <nav class="fixed w-full z-50 glass-nav border-b border-gray-100 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                
+                <!-- Brand Logo & Name -->
+                <a href="index.html" class="flex-shrink-0 flex items-center gap-3 group">
+                    <div class="w-12 h-12 bg-primary-900 rounded-xl flex items-center justify-center text-white font-heading font-bold text-2xl shadow-md transition-transform group-hover:scale-105">
+                        F<span class="text-blue-400">*</span>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-heading font-bold text-xl leading-none text-primary-900 tracking-tight">FUTURE</span>
+                        <span class="text-[10px] uppercase font-semibold text-gray-500 tracking-widest mt-1">Language School</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden lg:flex items-center space-x-6 xl:space-x-8">
+                    <a href="index.html" class="text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors">
+                        <span class="en-content">Home</span>
+                        <span class="mm-content">ပင်မစာမျက်နှာ</span>
+                    </a>
+                    <a href="about.html" class="text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors">
+                        <span class="en-content">About Us</span>
+                        <span class="mm-content">ကျောင်းအကြောင်း</span>
+                    </a>
+                    <a href="programs.html" class="text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors">
+                        <span class="en-content">Programs</span>
+                        <span class="mm-content">သင်တန်းများ</span>
+                    </a>
+                    <a href="stories.html" class="text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors">
+                        <span class="en-content">Success Stories</span>
+                        <span class="mm-content">အောင်မြင်မှုများ</span>
+                    </a>
+                    <a href="contact.html" class="text-sm font-medium text-primary-600 transition-colors">
+                        <span class="en-content">Contact</span>
+                        <span class="mm-content">ဆက်သွယ်ရန်</span>
+                    </a>
+                    
+                    <div class="pl-6 border-l border-gray-200 flex items-center space-x-4">
+                        <!-- Desktop Language Toggle -->
+                        <button onclick="toggleLanguage()" class="flex items-center space-x-2 text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors bg-gray-100 hover:bg-gray-200 px-3 py-1.5 rounded-full">
+                            <i class="fa-solid fa-language text-lg text-primary-600"></i>
+                            <span class="en-content">မြန်မာဘာသာ</span>
+                            <span class="mm-content">English</span>
+                        </button>
+                        
+                        <a href="#contact-info" class="bg-primary-600 text-white px-5 py-2.5 rounded-lg text-sm font-semibold hover:bg-primary-700 hover:shadow-lg transition-all active:scale-95">
+                            <span class="en-content">Call Us</span>
+                            <span class="mm-content">စုံစမ်းမည်</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Mobile Menu & Lang Button -->
+                <div class="lg:hidden flex items-center space-x-3">
+                    <button onclick="toggleLanguage()" class="text-gray-600 bg-gray-100 p-2 rounded-full w-9 h-9 flex items-center justify-center hover:bg-gray-200">
+                        <i class="fa-solid fa-language text-lg text-primary-600"></i>
+                    </button>
+                    <button id="mobile-menu-btn" class="text-gray-600 hover:text-primary-900 focus:outline-none p-2 transition-colors">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="lg:hidden hidden bg-white border-t border-gray-100 shadow-2xl absolute w-full transition-all">
+            <div class="px-4 pt-4 pb-8 space-y-2 flex flex-col">
+                <a href="index.html" class="mobile-link block px-4 py-3 rounded-lg text-base font-medium text-gray-700 hover:bg-primary-50 hover:text-primary-700 transition-colors">
+                    <span class="en-content">Home</span><span class="mm-content">ပင်မစာမျက်နှာ</span>
+                </a>
+                <a href="about.html" class="mobile-link block px-4 py-3 rounded-lg text-base font-medium text-gray-700 hover:bg-primary-50 hover:text-primary-700 transition-colors">
+                    <span class="en-content">About Us</span><span class="mm-content">ကျောင်းအကြောင်း</span>
+                </a>
+                <a href="programs.html" class="mobile-link block px-4 py-3 rounded-lg text-base font-medium text-gray-700 hover:bg-primary-50 hover:text-primary-700 transition-colors">
+                    <span class="en-content">Programs</span><span class="mm-content">သင်တန်းများ</span>
+                </a>
+                <a href="stories.html" class="mobile-link block px-4 py-3 rounded-lg text-base font-medium text-gray-700 hover:bg-primary-50 hover:text-primary-700 transition-colors">
+                    <span class="en-content">Success Stories</span><span class="mm-content">အောင်မြင်မှုများ</span>
+                </a>
+                <a href="contact.html" class="mobile-link block px-4 py-3 rounded-lg text-base font-medium text-primary-700 bg-primary-50 transition-colors">
+                    <span class="en-content">Contact</span><span class="mm-content">ဆက်သွယ်ရန်</span>
+                </a>
+                <a href="#contact-info" onclick="document.getElementById('mobile-menu').classList.add('hidden')" class="block px-4 py-3 mt-4 text-center rounded-lg text-base font-bold text-white bg-primary-600 hover:bg-primary-700 transition-colors">
+                    <span class="en-content">Call Us</span><span class="mm-content">စုံစမ်းမည်</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-20 lg:pt-40 lg:pb-24 hero-bg-contact overflow-hidden flex items-center">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full text-center">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-white leading-[1.2] mb-6 tracking-tight">
+                <span class="en-content">Get in <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-blue-100">Touch.</span></span>
+                <span class="mm-content">ဆက်သွယ် <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-blue-100">စုံစမ်းရန်</span></span>
+            </h1>
+            <p class="text-lg text-blue-100/90 max-w-2xl mx-auto leading-relaxed font-light">
+                <span class="en-content">Have questions about our Japanese language classes or student visas? Our team is here to help you every step of the way.</span>
+                <span class="mm-content">ဂျပန်စာသင်တန်းများနှင့် Student Visa အကြောင်း သိရှိလိုပါက အချိန်မရွေး ဆက်သွယ်စုံစမ်းနိုင်ပါသည်။</span>
+            </p>
+        </div>
+    </section>
+
+    <!-- Contact Info Cards -->
+    <section class="py-12 -mt-16 relative z-20" id="contact-info">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Location -->
+                <div class="bg-white rounded-2xl p-8 shadow-card border border-gray-100 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 text-center">
+                    <div class="w-14 h-14 bg-blue-50 text-primary-600 rounded-full flex items-center justify-center mx-auto text-2xl mb-6">
+                        <i class="fa-solid fa-location-dot"></i>
+                    </div>
+                    <h3 class="font-heading font-bold text-gray-900 text-lg mb-3">
+                        <span class="en-content">Our Location</span><span class="mm-content">ကျောင်းလိပ်စာ</span>
+                    </h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">
+                        <span class="en-content">No. 445, Myin Taw Thar Main Road,<br>3/Man Pyay Ward, Thaketa Township,<br>Yangon, Myanmar.</span>
+                        <span class="mm-content">အမှတ် (၄၄၅)၊ မြင်တော်သာလမ်းမကြီး၊<br>၃/မာန်ပြေရပ်ကွက်၊ သာကေတမြို့နယ်၊<br>ရန်ကုန်မြို့။</span>
+                    </p>
+                </div>
+
+                <!-- Phone -->
+                <div class="bg-white rounded-2xl p-8 shadow-card border border-gray-100 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 text-center">
+                    <div class="w-14 h-14 bg-blue-50 text-primary-600 rounded-full flex items-center justify-center mx-auto text-2xl mb-6">
+                        <i class="fa-solid fa-phone-volume"></i>
+                    </div>
+                    <h3 class="font-heading font-bold text-gray-900 text-lg mb-3">
+                        <span class="en-content">Call Us</span><span class="mm-content">ဖုန်းဆက်ရန်</span>
+                    </h3>
+                    <div class="flex flex-col space-y-2 text-gray-500 text-sm font-medium">
+                        <a href="tel:01547106" class="hover:text-primary-600 transition-colors">01-547106</a>
+                        <a href="tel:09254109605" class="hover:text-primary-600 transition-colors">09-254109605</a>
+                        <a href="tel:09254006723" class="hover:text-primary-600 transition-colors">09-254006723</a>
+                    </div>
+                </div>
+
+                <!-- Working Hours -->
+                <div class="bg-white rounded-2xl p-8 shadow-card border border-gray-100 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 text-center">
+                    <div class="w-14 h-14 bg-blue-50 text-primary-600 rounded-full flex items-center justify-center mx-auto text-2xl mb-6">
+                        <i class="fa-regular fa-clock"></i>
+                    </div>
+                    <h3 class="font-heading font-bold text-gray-900 text-lg mb-3">
+                        <span class="en-content">Working Hours</span><span class="mm-content">ရုံးချိန် / ကျောင်းချိန်</span>
+                    </h3>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-2">
+                        <span class="en-content">Monday to Sunday</span>
+                        <span class="mm-content">တနင်္လာ မှ တနင်္ဂနွေ အထိ</span>
+                    </p>
+                    <p class="font-bold text-primary-900">
+                        9:00 AM - 4:00 PM
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section (Full Width) -->
+    <section class="py-16" id="location-map">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-[2rem] shadow-soft border border-gray-100 overflow-hidden p-6 lg:p-10">
+                <div class="mb-10 text-center">
+                    <span class="text-primary-600 font-semibold tracking-wider uppercase text-xs mb-2 block">
+                        <span class="en-content">Find Us Here</span>
+                        <span class="mm-content">ကျောင်းတည်နေရာ</span>
+                    </span>
+                    <h2 class="font-heading text-3xl font-bold text-gray-900 mb-2">
+                        <span class="en-content">Our Location Map</span>
+                        <span class="mm-content">မြေပုံဖြင့် ရှာဖွေရန်</span>
+                    </h2>
+                </div>
+                
+                <!-- Generic Map focused on Thaketa, Yangon -->
+                <div class="h-[400px] lg:h-[500px] w-full rounded-2xl overflow-hidden relative shadow-inner">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1m2!1s0x30c1ed2058428ea3%3A0xc3f101ab0b8a13a2!2sThaketa%20Township%2C%20Yangon!5e0!3m2!1sen!2smm!4v1700000000000!5m2!1sen!2smm" 
+                        class="absolute inset-0 w-full h-full border-0" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white pt-24 pb-12 border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 mb-16">
+                
+                <!-- Footer Column 1: Brand -->
+                <div class="lg:col-span-4 pr-0 lg:pr-8">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-12 h-12 bg-primary-900 rounded-xl flex items-center justify-center text-white font-heading font-bold text-2xl shadow-md">
+                            F<span class="text-blue-400">*</span>
+                        </div>
+                        <h3 class="font-heading text-2xl font-bold tracking-tight text-gray-900">FUTURE</h3>
+                    </div>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-8">
+                        <span class="en-content">Empowering youth to take their next big step. We provide expert training in English, Japanese, and Korean to fast-track your journey abroad.</span>
+                        <span class="mm-content">လူငယ်များ၏ အနာဂတ် ခြေလှမ်းသစ်အတွက် English, Japan နှင့် Korea ဘာသာစကားများကို အကောင်းဆုံး သင်ကြားပေးနေသော ကျောင်းဖြစ်ပါသည်။</span>
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-50 border border-gray-200 flex items-center justify-center text-gray-600 hover:bg-primary-600 hover:text-white hover:border-transparent transition-all shadow-sm">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-50 border border-gray-200 flex items-center justify-center text-gray-600 hover:bg-primary-600 hover:text-white hover:border-transparent transition-all shadow-sm">
+                            <i class="fa-brands fa-viber"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Footer Column 2: Quick Links -->
+                <div class="lg:col-span-2">
+                    <h4 class="font-heading text-lg font-bold mb-6 text-gray-900">
+                        <span class="en-content">Quick Links</span><span class="mm-content">လင့်ခ်များ</span>
+                    </h4>
+                    <ul class="space-y-4 text-sm text-gray-500">
+                        <li><a href="index.html" class="hover:text-primary-600 transition-colors"><span class="en-content">Home</span><span class="mm-content">ပင်မစာမျက်နှာ</span></a></li>
+                        <li><a href="about.html" class="hover:text-primary-600 transition-colors"><span class="en-content">About Us</span><span class="mm-content">ကျောင်းအကြောင်း</span></a></li>
+                        <li><a href="programs.html" class="hover:text-primary-600 transition-colors"><span class="en-content">Our Programs</span><span class="mm-content">သင်တန်းများ</span></a></li>
+                        <li><a href="stories.html" class="hover:text-primary-600 transition-colors"><span class="en-content">Success Stories</span><span class="mm-content">အောင်မြင်မှုများ</span></a></li>
+                        <li><a href="contact.html" class="text-primary-600 font-medium"><span class="en-content">Contact Us</span><span class="mm-content">ဆက်သွယ်ရန်</span></a></li>
+                    </ul>
+                </div>
+
+                <!-- Footer Column 3: Contact -->
+                <div class="lg:col-span-3">
+                    <h4 class="font-heading text-lg font-bold mb-6 text-gray-900">
+                        <span class="en-content">Contact Details</span><span class="mm-content">ဆက်သွယ်ရန်</span>
+                    </h4>
+                    <ul class="space-y-6 text-sm text-gray-600">
+                        <li class="flex items-start">
+                            <div class="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center text-primary-600 mr-3 flex-shrink-0 mt-0.5">
+                                <i class="fa-solid fa-location-dot text-xs"></i>
+                            </div>
+                            <span class="leading-relaxed">
+                                <span class="en-content">No. 445, Myin Taw Thar Main Road,<br>3/Man Pyay Ward, Thaketa Township,<br>Yangon, Myanmar.</span>
+                                <span class="mm-content">အမှတ် (၄၄၅)၊ မြင်တော်သာလမ်းမကြီး၊<br>၃/မာန်ပြေရပ်ကွက်၊ သာကေတမြို့နယ်၊<br>ရန်ကုန်မြို့။</span>
+                            </span>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center text-primary-600 mr-3 flex-shrink-0 mt-0.5">
+                                <i class="fa-solid fa-phone text-xs"></i>
+                            </div>
+                            <div class="flex flex-col space-y-1 font-medium">
+                                <a href="tel:01547106" class="hover:text-primary-600 transition-colors">01-547106</a>
+                                <a href="tel:09254109605" class="hover:text-primary-600 transition-colors">09-254109605</a>
+                                <a href="tel:09254006723" class="hover:text-primary-600 transition-colors">09-254006723</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Footer Column 4: Apply Box -->
+                <div class="lg:col-span-3">
+                    <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100 shadow-sm">
+                        <h4 class="font-heading text-base font-bold mb-3 text-gray-900">
+                            <span class="en-content">Ready to start?</span><span class="mm-content">စုံစမ်းလိုပါသလား?</span>
+                        </h4>
+                        <p class="text-sm text-gray-500 mb-5 leading-relaxed">
+                            <span class="en-content">We are ready to guide you to your future in Japan. Call us directly for inquiries.</span>
+                            <span class="mm-content">သင်တန်းအပ်နှံရန်နှင့် အသေးစိတ်သိရှိလိုပါက ဖုန်းဖြင့် တိုက်ရိုက် ဆက်သွယ်နိုင်ပါသည်။</span>
+                        </p>
+                        <a href="tel:09254109605" class="w-full bg-primary-900 text-white font-semibold py-3 rounded-lg hover:bg-primary-950 transition-all text-sm shadow-md flex justify-center items-center active:scale-95 gap-2">
+                            <i class="fa-solid fa-phone-volume text-sm"></i>
+                            <span class="en-content">Call Us Now</span><span class="mm-content">ဖုန်းဆက်စုံစမ်းမည်</span>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div class="border-t border-gray-100 pt-8 flex flex-col justify-center items-center text-sm text-gray-500 text-center">
+                <p>&copy; <script>document.write(new Date().getFullYear())</script> FUTURE Foreign Language School. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Language Toggle Logic
+        function toggleLanguage() {
+            const htmlTag = document.documentElement;
+            if (htmlTag.getAttribute('lang') === 'en') {
+                htmlTag.setAttribute('lang', 'mm');
+                localStorage.setItem('preferredLanguage', 'mm');
+            } else {
+                htmlTag.setAttribute('lang', 'en');
+                localStorage.setItem('preferredLanguage', 'en');
+            }
+        }
+
+        // Check preference on load
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('preferredLanguage');
+            if (savedLang) {
+                document.documentElement.setAttribute('lang', savedLang);
+            }
+        });
+
+        // Mobile Menu Logic
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        const icon = btn.querySelector('i');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-xmark');
+        });
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 20) {
+                nav.classList.add('shadow-sm');
+                nav.style.background = 'rgba(255, 255, 255, 0.98)';
+            } else {
+                nav.classList.remove('shadow-sm');
+                nav.style.background = 'rgba(255, 255, 255, 0.92)';
+            }
+        });
+    </script>
+</body>
+</html>

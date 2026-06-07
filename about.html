@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <!-- Premium SEO & Home Tags -->
+    <title>About Us - FUTURE Foreign Language School</title>
+    <meta name="description" content="Learn more about FUTURE Foreign Language School, our vision, mission, and the founder's dedication to empowering youth for studying in Japan.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter, Poppins, Padauk -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@500;600;700;800&family=Padauk:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'Padauk', 'sans-serif'],
+                        heading: ['Poppins', 'Padauk', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            800: '#1e40af',
+                            900: '#1e3a8a', // Brand Blue
+                            950: '#172554',
+                        }
+                    },
+                    boxShadow: {
+                        'soft': '0 20px 40px -15px rgba(0,0,0,0.05)',
+                        'glow': '0 0 20px rgba(59, 130, 246, 0.5)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .hero-bg-about {
+            background-image: linear-gradient(to right, rgba(30, 58, 138, 0.98), rgba(23, 37, 84, 0.85)), url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        /* LANGUAGE SWITCHER CSS LOGIC */
+        :lang(en) .mm-content { display: none !important; }
+        :lang(mm) .en-content { display: none !important; }
+        
+        .en-content, .mm-content {
+            animation: fadeIn 0.4s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-600 bg-gray-50/30">
+
+    <nav class="fixed w-full z-50 glass-nav border-b border-gray-100 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                
+                <!-- Brand Logo & Name -->
+                <a href="index.html" class="flex-shrink-0 flex items-center gap-3 group">
+                    <div class="w-12 h-12 bg-primary-900 rounded-xl flex items-center justify-center text-white font-heading font-bold text-2xl shadow-md transition-transform group-hover:scale-105">
+                        F<span class="text-blue-400">*</span>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-heading font-bold text-xl leading-none text-primary-900 tracking-tight">FUTURE</span>
+                        <span class="text-[10px] uppercase font-semibold text-gray-500 tracking-widest mt-1">Language School</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden lg:flex items-center space-x-6 xl:space-x-8">
+                    <a href="index.html" class="text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors">
+                        <span class="en-content">Home</span>
+                        <span class="mm-content">ပင်မစာမျက်နှာ</span>
+                    </a>
+                    <a href="about.html" class="text-sm font-medium text-primary-600 transition-colors">
+                        <span class="en-content">About Us</span>
+                        <span class="mm-content">ကျောင်းအကြောင်း</span>
+                    </a>
+                    <a href="index.html#programs" class="text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors">
+                        <span class="en-content">Programs</span>
+                        <span class="mm-content">သင်တန်းများ</span>
+                    </a>
+                    
+                    <div class="pl-6 border-l border-gray-200 flex items-center space-x-4">
+                        <!-- Desktop Language Toggle -->
+                        <button onclick="toggleLanguage()" class="flex items-center space-x-2 text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors bg-gray-100 hover:bg-gray-200 px-3 py-1.5 rounded-full">
+                            <i class="fa-solid fa-language text-lg text-primary-600"></i>
+                            <span class="en-content">မြန်မာဘာသာ</span>
+                            <span class="mm-content">English</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Mobile Menu & Lang Button -->
+                <div class="lg:hidden flex items-center space-x-3">
+                    <button onclick="toggleLanguage()" class="text-gray-600 bg-gray-100 p-2 rounded-full w-9 h-9 flex items-center justify-center hover:bg-gray-200">
+                        <i class="fa-solid fa-language text-lg text-primary-600"></i>
+                    </button>
+                    <button id="mobile-menu-btn" class="text-gray-600 hover:text-primary-900 focus:outline-none p-2 transition-colors">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="lg:hidden hidden bg-white border-t border-gray-100 shadow-2xl absolute w-full transition-all">
+            <div class="px-4 pt-4 pb-8 space-y-2 flex flex-col">
+                <a href="index.html" class="mobile-link block px-4 py-3 rounded-lg text-base font-medium text-gray-700 hover:bg-primary-50 hover:text-primary-700 transition-colors">
+                    <span class="en-content">Home</span><span class="mm-content">ပင်မစာမျက်နှာ</span>
+                </a>
+                <a href="about.html" class="mobile-link block px-4 py-3 rounded-lg text-base font-medium text-primary-700 bg-primary-50 transition-colors">
+                    <span class="en-content">About Us</span><span class="mm-content">ကျောင်းအကြောင်း</span>
+                </a>
+                <a href="index.html#programs" class="mobile-link block px-4 py-3 rounded-lg text-base font-medium text-gray-700 hover:bg-primary-50 hover:text-primary-700 transition-colors">
+                    <span class="en-content">Programs</span><span class="mm-content">သင်တန်းများ</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 hero-bg-about overflow-hidden flex items-center">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full text-center">
+            <span class="inline-flex items-center px-4 py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-md mb-6 shadow-soft">
+                <span class="text-xs font-semibold text-blue-50 uppercase tracking-widest">
+                    <span class="en-content">Our Story</span>
+                    <span class="mm-content">ကျွန်ုပ်တို့အကြောင်း</span>
+                </span>
+            </span>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-white leading-[1.2] mb-6 tracking-tight max-w-4xl mx-auto">
+                <span class="en-content">Empowering Youth for a <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-blue-100">Global Future.</span></span>
+                <span class="mm-content">လူငယ်များ၏ အနာဂတ်အတွက် <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-blue-100">ခိုင်မာသော ခြေလှမ်းသစ်။</span></span>
+            </h1>
+            <p class="text-lg md:text-xl text-blue-100/90 max-w-2xl mx-auto leading-relaxed font-light">
+                <span class="en-content">"The future of parents, the new step of youth." We are dedicated to providing the highest quality language education and cultural integration for your success in Japan.</span>
+                <span class="mm-content">"မိဘများရဲ့အနာဂတ် လူငယ်များရဲ့ခြေလှမ်းသစ်" ဆိုသည့် ဆောင်ပုဒ်နှင့်အညီ ဂျပန်နိုင်ငံသို့ အမြန်ဆုံးနှင့် အသေချာဆုံး သွားရောက်နိုင်ရန် အကောင်းဆုံး ပံ့ပိုးပေးနေပါသည်။</span>
+            </p>
+        </div>
+        <div class="absolute bottom-0 left-0 w-full h-16 bg-gradient-to-t from-gray-50/30 to-transparent"></div>
+    </section>
+
+    <section class="py-20 lg:py-32 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20">
+                
+                <!-- Vision -->
+                <div class="bg-white rounded-3xl p-10 lg:p-14 shadow-soft border border-gray-100 relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-primary-50 rounded-bl-full -z-10 transition-transform group-hover:scale-110"></div>
+                    <div class="w-16 h-16 bg-primary-100 rounded-2xl flex items-center justify-center text-primary-600 text-3xl mb-8">
+                        <i class="fa-solid fa-eye"></i>
+                    </div>
+                    <h3 class="font-heading text-2xl md:text-3xl font-bold text-gray-900 mb-6">
+                        <span class="en-content">Our Vision</span>
+                        <span class="mm-content">ရည်မှန်းချက် (Vision)</span>
+                    </h3>
+                    <p class="text-gray-600 leading-relaxed text-lg">
+                        <span class="en-content">To become Myanmar's most trusted gateway for students aspiring to study and work in Japan. We aim to be the standard of excellence in language education, recognized internationally for our 100% success rate and student-centered approach.</span>
+                        <span class="mm-content">ဂျပန်နိုင်ငံသို့ ပညာသင်ကြားရန်နှင့် အလုပ်လုပ်ကိုင်ရန် ရည်မှန်းထားသော မြန်မာလူငယ်များအတွက် အယုံကြည်ရဆုံးနှင့် အကောင်းဆုံးသော ပညာရေးတံခါးပေါက် ဖြစ်လာစေရန်နှင့် နိုင်ငံတကာအဆင့်မီ ဘာသာစကားသင်တန်းကျောင်းအဖြစ် ရပ်တည်ရန်။</span>
+                    </p>
+                </div>
+
+                <!-- Mission -->
+                <div class="bg-primary-900 rounded-3xl p-10 lg:p-14 shadow-soft relative overflow-hidden group text-white">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-primary-800 rounded-bl-full -z-10 transition-transform group-hover:scale-110"></div>
+                    <div class="w-16 h-16 bg-primary-800 rounded-2xl flex items-center justify-center text-blue-200 text-3xl mb-8 border border-primary-700">
+                        <i class="fa-solid fa-bullseye"></i>
+                    </div>
+                    <h3 class="font-heading text-2xl md:text-3xl font-bold mb-6">
+                        <span class="en-content">Our Mission</span>
+                        <span class="mm-content">လုပ်ဆောင်ချက် (Mission)</span>
+                    </h3>
+                    <p class="text-blue-100 leading-relaxed text-lg">
+                        <span class="en-content">To empower youth with top-tier language skills and cultural knowledge through proven methodologies used by Language Schools in Japan. We provide systematic training, personalized mentoring, and end-to-end visa support.</span>
+                        <span class="mm-content">ဂျပန်နိုင်ငံရှိ ကျောင်းများတွင် အသုံးပြုသော နည်းစနစ်များဖြင့် စနစ်တကျ သင်ကြားပေးပြီး ကျောင်းသားတိုင်း ၁၀၀% ဗီဇာအောင်မြင်မှု ရရှိစေရန်နှင့် ဂျပန်ယဉ်ကျေးမှုများကိုပါ နားလည်တတ်ကျွမ်းစေရန် စနစ်တကျ လေ့ကျင့်ပံ့ပိုးပေးရန်။</span>
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-white border-y border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+                
+                <div class="lg:col-span-5 relative">
+                    <!-- Image Placeholder for Founder or Principal -->
+                    <div class="relative rounded-[2rem] overflow-hidden shadow-2xl aspect-[4/5]">
+                        <img src="https://placehold.co/800x1000/1e3a8a/ffffff?text=Founder+/+Principal" alt="Founder of Future School" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-primary-950/80 via-transparent to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 p-8">
+                            <h4 class="text-white font-heading font-bold text-2xl mb-1">
+                                <span class="en-content">Founder & Principal</span>
+                                <span class="mm-content">ကျောင်းအုပ်ကြီး</span>
+                            </h4>
+                            <p class="text-blue-200 text-sm font-medium">FUTURE Foreign Language School</p>
+                        </div>
+                    </div>
+                    <!-- Decorative Elements -->
+                    <div class="absolute -top-6 -left-6 w-24 h-24 bg-blue-100 rounded-full -z-10"></div>
+                    <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-gray-100 rounded-full -z-10"></div>
+                </div>
+
+                <div class="lg:col-span-7">
+                    <span class="text-primary-600 font-semibold tracking-wider uppercase text-xs mb-3 block">
+                        <span class="en-content">Message from the Leadership</span>
+                        <span class="mm-content">ကျောင်းတည်ထောင်သူ၏ အမှာစကား</span>
+                    </span>
+                    <h2 class="font-heading text-3xl md:text-4xl font-bold text-gray-900 mb-8 tracking-tight">
+                        <span class="en-content">Turning Dreams into <span class="text-primary-600">Reality.</span></span>
+                        <span class="mm-content">သင့်အိပ်မက်များကို <span class="text-primary-600">လက်တွေ့အကောင်အထည်ဖော်ပါ။</span></span>
+                    </h2>
+                    
+                    <div class="space-y-6 text-gray-600 text-lg leading-relaxed relative">
+                        <i class="fa-solid fa-quote-left absolute -top-4 -left-6 text-4xl text-gray-100 -z-10"></i>
+                        <p>
+                            <span class="en-content">As the founder of FUTURE Foreign Language School, my primary goal has always been simple: to create a clear, reliable pathway for our youth to succeed globally. We understand that deciding to study abroad is a monumental step for both students and their parents.</span>
+                            <span class="mm-content">FUTURE Foreign Language School ကို တည်ထောင်သူအနေဖြင့် ကျွန်ုပ်၏ အဓိကရည်မှန်းချက်မှာ မြန်မာလူငယ်များ၏ အိပ်မက်များကို လက်တွေ့အကောင်အထည်ဖော်ပေးရန် ဖြစ်ပါသည်။ နိုင်ငံခြားသို့ သွားရောက်ပညာသင်ကြားခြင်းသည် ကျောင်းသားများနှင့် မိဘများအတွက် အလွန်အရေးကြီးသော ခြေလှမ်းဖြစ်ကြောင်း ကျွန်ုပ်တို့ အပြည့်အဝ နားလည်ပါသည်။</span>
+                        </p>
+                        <p>
+                            <span class="en-content">That is why our slogan is <strong>"The future of parents, the new step of youth."</strong> We do not just teach a language; we adopt the exact methodologies used by Language Schools in Japan. From rigorous Nat-Test and JLPT preparations to mock interviews and cultural orientation, we ensure that every student is 100% ready to secure their Student Visa.</span>
+                            <span class="mm-content">ထို့ကြောင့် <strong>"မိဘများရဲ့ အနာဂတ်၊ လူငယ်များရဲ့ ခြေလှမ်းသစ်"</strong> ဆိုသည့် ဆောင်ပုဒ်နှင့်အညီ ကျောင်းသားတိုင်း ၁၀၀% အောင်မြင်မှုရရှိစေရန် အစွမ်းကုန် ကြိုးစားပံ့ပိုးပေးလျက်ရှိပါသည်။ ဂျပန် Language School များ၏ စံနှုန်းများအတိုင်း တစ်ဦးချင်းစီကို အနီးကပ် လေ့ကျင့်သင်ကြားပေးပြီး Interview အောင်မြင်သည်အထိ တာဝန်ယူပေးနေပါသည်။</span>
+                        </p>
+                        <p class="font-medium text-gray-900 mt-8">
+                            <span class="en-content">Welcome to FUTURE. Let us take this vital step together.</span>
+                            <span class="mm-content">FUTURE မှ နွေးထွေးစွာ ကြိုဆိုပါသည်။ အောင်မြင်သော အနာဂတ်ဆီသို့ အတူတူ လျှောက်လှမ်းကြပါစို့။</span>
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="font-heading text-3xl font-bold text-gray-900 mb-6">
+                    <span class="en-content">Our Core Values</span>
+                    <span class="mm-content">ကျွန်ုပ်တို့၏ ခံယူချက်များ</span>
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Value 1 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 text-center hover:-translate-y-2 transition-transform duration-300">
+                    <div class="w-14 h-14 bg-blue-50 rounded-full flex items-center justify-center text-primary-600 text-2xl mx-auto mb-6">
+                        <i class="fa-solid fa-medal"></i>
+                    </div>
+                    <h3 class="font-heading font-bold text-gray-900 text-xl mb-3">
+                        <span class="en-content">Excellence</span>
+                        <span class="mm-content">အကောင်းဆုံး အရည်အသွေး</span>
+                    </h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">
+                        <span class="en-content">Delivering the highest standard of Japanese language education through strictly supervised methodologies.</span>
+                        <span class="mm-content">ဂျပန်စံနှုန်းများနှင့်အညီ စနစ်တကျ ပြင်ဆင်ထားသော သင်ရိုးများဖြင့် အကောင်းဆုံး ပညာရေးကို ပေးစွမ်းခြင်း။</span>
+                    </p>
+                </div>
+                <!-- Value 2 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 text-center hover:-translate-y-2 transition-transform duration-300">
+                    <div class="w-14 h-14 bg-blue-50 rounded-full flex items-center justify-center text-primary-600 text-2xl mx-auto mb-6">
+                        <i class="fa-solid fa-handshake-angle"></i>
+                    </div>
+                    <h3 class="font-heading font-bold text-gray-900 text-xl mb-3">
+                        <span class="en-content">Commitment</span>
+                        <span class="mm-content">တာဝန်ယူမှု</span>
+                    </h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">
+                        <span class="en-content">We stand by our students from their first class until they successfully arrive in Japan.</span>
+                        <span class="mm-content">ကျောင်းအပ်သည့်နေ့မှစ၍ ဂျပန်နိုင်ငံသို့ အောင်မြင်စွာ ရောက်ရှိသည်အထိ အပြည့်အဝ တာဝန်ယူပေးခြင်း။</span>
+                    </p>
+                </div>
+                <!-- Value 3 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 text-center hover:-translate-y-2 transition-transform duration-300">
+                    <div class="w-14 h-14 bg-blue-50 rounded-full flex items-center justify-center text-primary-600 text-2xl mx-auto mb-6">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+                    <h3 class="font-heading font-bold text-gray-900 text-xl mb-3">
+                        <span class="en-content">Student-Centric</span>
+                        <span class="mm-content">ကျောင်းသားဗဟိုပြု</span>
+                    </h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">
+                        <span class="en-content">Focusing on individual growth, listening, and speaking skills with personalized 1-on-1 attention.</span>
+                        <span class="mm-content">ကျောင်းသားတစ်ဦးချင်းစီ၏ အားနည်းချက်များကို သေချာလေ့လာပြီး လိုအပ်ချက်များကို အနီးကပ် ဖြည့်ဆည်းသင်ကြားပေးခြင်း။</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-white pt-24 pb-12 border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 mb-16">
+                
+                <div class="lg:col-span-4 pr-0 lg:pr-8">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-12 h-12 bg-primary-900 rounded-xl flex items-center justify-center text-white font-heading font-bold text-2xl shadow-md">
+                            F<span class="text-blue-400">*</span>
+                        </div>
+                        <h3 class="font-heading text-2xl font-bold tracking-tight text-gray-900">FUTURE</h3>
+                    </div>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-8">
+                        <span class="en-content">Empowering youth to take their next big step. We provide expert training in English, Japanese, and Korean to fast-track your journey abroad.</span>
+                        <span class="mm-content">လူငယ်များ၏ အနာဂတ် ခြေလှမ်းသစ်အတွက် English, Japan နှင့် Korea ဘာသာစကားများကို အကောင်းဆုံး သင်ကြားပေးနေသော ကျောင်းဖြစ်ပါသည်။</span>
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-50 border border-gray-200 flex items-center justify-center text-gray-600 hover:bg-primary-600 hover:text-white hover:border-transparent transition-all shadow-sm">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-50 border border-gray-200 flex items-center justify-center text-gray-600 hover:bg-primary-600 hover:text-white hover:border-transparent transition-all shadow-sm">
+                            <i class="fa-brands fa-viber"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-4">
+                    <h4 class="font-heading text-lg font-bold mb-6 text-gray-900">
+                        <span class="en-content">Contact Details</span><span class="mm-content">ဆက်သွယ်ရန်</span>
+                    </h4>
+                    <ul class="space-y-6 text-sm text-gray-600">
+                        <li class="flex items-start">
+                            <div class="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-primary-600 mr-4 flex-shrink-0">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <span class="leading-relaxed pt-2">
+                                <span class="en-content">No. 445, Myin Taw Thar Main Road,<br>3/Man Pyay Ward, Thaketa Township,<br>Yangon, Myanmar.</span>
+                                <span class="mm-content">အမှတ် (၄၄၅)၊ မြင်တော်သာလမ်းမကြီး၊<br>၃/မာန်ပြေရပ်ကွက်၊ သာကေတမြို့နယ်၊<br>ရန်ကုန်မြို့။</span>
+                            </span>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-primary-600 mr-4 flex-shrink-0">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div class="flex flex-col space-y-1 pt-2 font-medium">
+                                <a href="tel:01547106" class="hover:text-primary-600 transition-colors">01-547106</a>
+                                <a href="tel:09254109605" class="hover:text-primary-600 transition-colors">09-254109605</a>
+                                <a href="tel:09254006723" class="hover:text-primary-600 transition-colors">09-254006723</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="lg:col-span-4">
+                    <div class="bg-gray-50 rounded-2xl p-8 border border-gray-100 shadow-sm">
+                        <h4 class="font-heading text-lg font-bold mb-4 text-gray-900">
+                            <span class="en-content">Ready to start?</span><span class="mm-content">စုံစမ်းလိုပါသလား?</span>
+                        </h4>
+                        <p class="text-sm text-gray-500 mb-6">
+                            <span class="en-content">Head over to our homepage to fill out the registration form or contact us directly.</span>
+                            <span class="mm-content">သင်တန်းအပ်နှံရန်နှင့် အသေးစိတ်သိရှိလိုပါက ပင်မစာမျက်နှာရှိ ဖောင်တွင် ဖြည့်စွက်နိုင်ပါသည်။</span>
+                        </p>
+                        <a href="index.html#contact" class="w-full bg-primary-900 text-white font-semibold py-3.5 rounded-lg hover:bg-primary-950 transition-all text-sm shadow-md flex justify-center items-center active:scale-95">
+                            <span class="en-content">Go to Inquiry Form</span><span class="mm-content">ဖောင်ဖြည့်ရန် သွားမည်</span>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div class="border-t border-gray-100 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
+                <p>&copy; <script>document.write(new Date().getFullYear())</script> FUTURE Foreign Language School. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Language Toggle Logic
+        function toggleLanguage() {
+            const htmlTag = document.documentElement;
+            if (htmlTag.getAttribute('lang') === 'en') {
+                htmlTag.setAttribute('lang', 'mm');
+                localStorage.setItem('preferredLanguage', 'mm');
+            } else {
+                htmlTag.setAttribute('lang', 'en');
+                localStorage.setItem('preferredLanguage', 'en');
+            }
+        }
+
+        // Check preference on load
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('preferredLanguage');
+            if (savedLang) {
+                document.documentElement.setAttribute('lang', savedLang);
+            }
+        });
+
+        // Mobile Menu Logic
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        const icon = btn.querySelector('i');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-xmark');
+        });
+
+        // Navbar Scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 20) {
+                nav.classList.add('shadow-sm');
+                nav.style.background = 'rgba(255, 255, 255, 0.98)';
+            } else {
+                nav.classList.remove('shadow-sm');
+                nav.style.background = 'rgba(255, 255, 255, 0.92)';
+            }
+        });
+    </script>
+</body>
+</html>
