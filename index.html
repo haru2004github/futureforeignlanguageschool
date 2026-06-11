@@ -18,7 +18,6 @@
     <meta property="og:url" content="https://www.futurelanguageschool.com/">
     <meta property="og:title" content="FUTURE Foreign Language School - Japanese Language Experts">
     <meta property="og:description" content="Established in 2016. Empowering youth to take their next big step. We provide expert training in Japanese to fast-track your journey abroad.">
-    <!-- Note: For production, replace the image content with absolute URL e.g., https://www.yourdomain.com/img/meta_photo.png -->
     <meta property="og:image" content="./img/meta_photo.png">
     <meta property="og:site_name" content="FUTURE Foreign Language School">
     
@@ -27,7 +26,6 @@
     <meta property="twitter:url" content="https://www.futurelanguageschool.com/">
     <meta property="twitter:title" content="FUTURE Foreign Language School - Japanese Language Experts">
     <meta property="twitter:description" content="Established in 2016. Empowering youth to take their next big step. We provide expert training in Japanese to fast-track your journey abroad.">
-    <!-- Note: For production, replace the image content with absolute URL -->
     <meta property="twitter:image" content="./img/meta_photo.png">
     
     <!-- Tailwind CSS -->
@@ -40,6 +38,14 @@
     
     <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Instant Language Loader to prevent flickering -->
+    <script>
+        (function() {
+            const savedLang = localStorage.getItem('preferredLanguage') || 'en';
+            document.documentElement.setAttribute('lang', savedLang);
+        })();
+    </script>
 
     <script>
         tailwind.config = {
@@ -71,10 +77,12 @@
             background-size: cover; background-position: center;
         }
         
-        /* LANGUAGE SWITCHER CSS LOGIC */
-        :lang(en) .mm-content { display: none !important; }
-        :lang(mm) .en-content { display: none !important; }
-        .en-content, .mm-content { animation: fadeIn 0.4s ease-in-out; }
+        /* 3-LANGUAGE SWITCHER CSS LOGIC */
+        :lang(en) .mm-content, :lang(en) .jp-content { display: none !important; }
+        :lang(mm) .en-content, :lang(mm) .jp-content { display: none !important; }
+        :lang(jp) .en-content, :lang(jp) .mm-content { display: none !important; }
+        
+        .en-content, .mm-content, .jp-content { animation: fadeIn 0.4s ease-in-out; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
@@ -86,7 +94,7 @@
             <div class="flex justify-between items-center h-20">
                 <!-- Brand -->
                 <a href="index.html" class="flex-shrink-0 flex items-center gap-3 group">
-                    <img class="w-16 rounded-lg" src="./img/logo.jpg" alt="">
+                    <img class="w-16 rounded-lg" src="./img/logo.jpg" alt="FUTURE Logo">
                     <div class="flex flex-col">
                         <span class="font-heading font-bold text-xl leading-none text-primary-900 tracking-tight">FUTURE FOREIGN</span>
                         <span class="text-[10px] uppercase font-semibold text-gray-500 tracking-widest mt-1">Language School</span>
@@ -95,16 +103,28 @@
 
                 <!-- Desktop Nav -->
                 <div class="hidden lg:flex items-center space-x-6 xl:space-x-8">
-                    <a href="index.html" class="text-sm font-medium text-primary-600 transition-colors"><span class="en-content">Home</span><span class="mm-content">ပင်မစာမျက်နှာ</span></a>
-                    <a href="about.html" class="text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors"><span class="en-content">About Us</span><span class="mm-content">ကျောင်းအကြောင်း</span></a>
-                    <a href="programs.html" class="text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors"><span class="en-content">Programs</span><span class="mm-content">သင်တန်းများ</span></a>
-                    <a href="stories.html" class="text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors"><span class="en-content">Success Stories</span><span class="mm-content">အောင်မြင်မှုများ</span></a>
-                    <a href="contact.html" class="text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors"><span class="en-content">Contact</span><span class="mm-content">ဆက်သွယ်ရန်</span></a>
+                    <a href="index.html" class="text-sm font-medium text-primary-600 transition-colors">
+                        <span class="en-content">Home</span><span class="mm-content">ပင်မစာမျက်နှာ</span><span class="jp-content">ホーム</span>
+                    </a>
+                    <a href="about.html" class="text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors">
+                        <span class="en-content">About Us</span><span class="mm-content">ကျောင်းအကြောင်း</span><span class="jp-content">学校について</span>
+                    </a>
+                    <a href="programs.html" class="text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors">
+                        <span class="en-content">Programs</span><span class="mm-content">သင်တန်းများ</span><span class="jp-content">コース</span>
+                    </a>
+                    <a href="stories.html" class="text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors">
+                        <span class="en-content">Success Stories</span><span class="mm-content">အောင်မြင်မှုများ</span><span class="jp-content">成功事例</span>
+                    </a>
+                    <a href="contact.html" class="text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors">
+                        <span class="en-content">Contact</span><span class="mm-content">ဆက်သွယ်ရန်</span><span class="jp-content">お問い合わせ</span>
+                    </a>
                     
                     <div class="pl-6 border-l border-gray-200 flex items-center space-x-4">
                         <button onclick="toggleLanguage()" class="flex items-center space-x-2 text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors bg-gray-100 hover:bg-gray-200 px-3 py-1.5 rounded-full">
                             <i class="fa-solid fa-language text-lg text-primary-600"></i>
-                            <span class="en-content">မြန်မာဘာသာ</span><span class="mm-content">English</span>
+                            <span class="en-content">မြန်မာဘာသာ</span>
+                            <span class="mm-content">日本語</span>
+                            <span class="jp-content">English</span>
                         </button>
                     </div>
                 </div>
@@ -124,11 +144,21 @@
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="lg:hidden hidden bg-white border-t border-gray-100 shadow-2xl absolute w-full transition-all">
             <div class="px-4 pt-4 pb-8 space-y-2 flex flex-col">
-                <a href="index.html" class="block px-4 py-3 rounded-lg text-base font-medium text-primary-700 bg-primary-50"><span class="en-content">Home</span><span class="mm-content">ပင်မစာမျက်နှာ</span></a>
-                <a href="about.html" class="block px-4 py-3 rounded-lg text-base font-medium text-gray-700 hover:bg-primary-50"><span class="en-content">About Us</span><span class="mm-content">ကျောင်းအကြောင်း</span></a>
-                <a href="programs.html" class="block px-4 py-3 rounded-lg text-base font-medium text-gray-700 hover:bg-primary-50"><span class="en-content">Programs</span><span class="mm-content">သင်တန်းများ</span></a>
-                <a href="stories.html" class="block px-4 py-3 rounded-lg text-base font-medium text-gray-700 hover:bg-primary-50"><span class="en-content">Success Stories</span><span class="mm-content">အောင်မြင်မှုများ</span></a>
-                <a href="contact.html" class="block px-4 py-3 rounded-lg text-base font-medium text-gray-700 hover:bg-primary-50"><span class="en-content">Contact</span><span class="mm-content">ဆက်သွယ်ရန်</span></a>
+                <a href="index.html" class="block px-4 py-3 rounded-lg text-base font-medium text-primary-700 bg-primary-50">
+                    <span class="en-content">Home</span><span class="mm-content">ပင်မစာမျက်နှာ</span><span class="jp-content">ホーム</span>
+                </a>
+                <a href="about.html" class="block px-4 py-3 rounded-lg text-base font-medium text-gray-700 hover:bg-primary-50">
+                    <span class="en-content">About Us</span><span class="mm-content">ကျောင်းအကြောင်း</span><span class="jp-content">学校について</span>
+                </a>
+                <a href="programs.html" class="block px-4 py-3 rounded-lg text-base font-medium text-gray-700 hover:bg-primary-50">
+                    <span class="en-content">Programs</span><span class="mm-content">သင်တန်းများ</span><span class="jp-content">コース</span>
+                </a>
+                <a href="stories.html" class="block px-4 py-3 rounded-lg text-base font-medium text-gray-700 hover:bg-primary-50">
+                    <span class="en-content">Success Stories</span><span class="mm-content">အောင်မြင်မှုများ</span><span class="jp-content">成功事例</span>
+                </a>
+                <a href="contact.html" class="block px-4 py-3 rounded-lg text-base font-medium text-gray-700 hover:bg-primary-50">
+                    <span class="en-content">Contact</span><span class="mm-content">ဆက်သွယ်ရန်</span><span class="jp-content">お問い合わせ</span>
+                </a>
             </div>
         </div>
     </nav>
@@ -143,10 +173,14 @@
                 <p class="text-blue-200 text-sm md:text-base mt-2 tracking-widest uppercase">(Fyūchā Gaikokugo Gakkō)</p>
             </div>
 
-            <!-- English/Myanmar Title -->
+            <!-- Title -->
             <h1 class="text-4xl md:text-6xl lg:text-7xl font-heading font-bold text-white leading-tight mb-6 tracking-tight">
                 <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-blue-100">FUTURE</span>
-                <span class="block text-2xl md:text-4xl mt-2 font-medium">Foreign Languages School</span>
+                <span class="block text-2xl md:text-4xl mt-2 font-medium">
+                    <span class="en-content">Foreign Languages School</span>
+                    <span class="mm-content">Foreign Languages School</span>
+                    <span class="jp-content">外国語学校</span>
+                </span>
             </h1>
 
             <!-- Slogan -->
@@ -154,6 +188,7 @@
                 <p class="text-lg md:text-xl text-white font-medium">
                     <span class="en-content">Parents' Hope, Youth's Future.</span>
                     <span class="mm-content">မိဘများရဲ့ မျှော်လင့်ချက် လူငယ်များအတွက် အနာဂတ်</span>
+                    <span class="jp-content">親の希望、若者たちの未来</span>
                 </p>
                 <p class="text-base text-blue-200 font-jp">
                     親の希望、若者たちの未来
@@ -161,6 +196,7 @@
                 <p class="text-sm md:text-base text-blue-100/90 leading-relaxed pt-2 border-t border-white/10 mt-4">
                     <span class="en-content">For the future of ambitious youths striving towards a successful life path.</span>
                     <span class="mm-content">အောင်မြင်သော ဘဝတက်လမ်းလျှောက်လှမ်းရန် ကြိုးစားနေကြသော လူငယ်လူရွယ်များ၏ အနာဂတ်အတွက်။</span>
+                    <span class="jp-content">成功への道を歩む野心的な若者たちの未来のために。</span>
                 </p>
             </div>
             
@@ -168,53 +204,60 @@
                 <a href="programs.html" class="inline-flex items-center justify-center px-8 py-3.5 text-base font-semibold text-primary-900 transition-all duration-200 bg-white border border-transparent rounded-full hover:bg-gray-100 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white active:scale-95">
                     <span class="en-content">Explore Programs</span>
                     <span class="mm-content">သင်တန်းများ ကြည့်ရန်</span>
+                    <span class="jp-content">コースを見る</span>
                     <i class="fa-solid fa-arrow-right ml-2 text-sm"></i>
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Trust Numbers & Statistics Section (Floating over Hero) -->
+    <!-- Trust Numbers & Statistics Section -->
     <section class="relative z-20 -mt-16 md:-mt-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="bg-white rounded-2xl shadow-card border border-gray-100 p-8 grid grid-cols-1 md:grid-cols-3 gap-8 divide-y md:divide-y-0 md:divide-x divide-gray-100">
                 
-                <!-- Stat 1: Students in Japan -->
+                <!-- Stat 1 -->
                 <div class="text-center px-4 py-2">
-                    <div class="text-4xl md:text-5xl font-heading font-bold text-primary-600 mb-2">150<span class="text-3xl text-primary-400">+</span></div>
+                    <div class="text-4xl md:text-5xl font-heading font-bold text-primary-600 mb-2">82<span class="text-3xl text-primary-400">+</span></div>
                     <div class="text-base font-bold text-gray-900 mb-1">
                         <span class="en-content">Successful Students</span>
                         <span class="mm-content">ဂျပန်ရောက် ကျောင်းသား/သူ</span>
+                        <span class="jp-content">成功した学生</span>
                     </div>
                     <div class="text-sm text-gray-500">
                         <span class="en-content">Sent to Japan</span>
                         <span class="mm-content">ယခုအချိန်ထိ အောင်မြင်စွာ ပို့ဆောင်ပေးနိုင်ခဲ့ပြီဖြစ်သည်</span>
+                        <span class="jp-content">日本へ派遣されました</span>
                     </div>
                 </div>
                 
-                <!-- Stat 2: Teachers -->
+                <!-- Stat 2 -->
                 <div class="text-center px-4 py-2 pt-6 md:pt-2">
                     <div class="text-4xl md:text-5xl font-heading font-bold text-primary-600 mb-2">7-9</div>
                     <div class="text-base font-bold text-gray-900 mb-1">
                         <span class="en-content">Expert Teachers & Staff</span>
                         <span class="mm-content">ဆရာ/ဆရာမ နှင့် ဝန်ထမ်း</span>
+                        <span class="jp-content">専門の教師とスタッフ</span>
                     </div>
                     <div class="text-sm text-gray-500">
                         <span class="en-content">Dedicated professionals (Part-time/Full-time)</span>
                         <span class="mm-content">ကျွမ်းကျင်စွာ အချိန်ပိုင်း/အချိန်ပြည့် တာဝန်ယူသင်ကြားသည်</span>
+                        <span class="jp-content">専任のプロフェッショナル</span>
                     </div>
                 </div>
 
-                <!-- Stat 3: Monthly Limit -->
+                <!-- Stat 3 -->
                 <div class="text-center px-4 py-2 pt-6 md:pt-2">
                     <div class="text-4xl md:text-5xl font-heading font-bold text-primary-600 mb-2">20-30</div>
                     <div class="text-base font-bold text-gray-900 mb-1">
                         <span class="en-content">Students Per Month</span>
                         <span class="mm-content">တစ်လလျှင် လက်ခံသည့် ဦးရေ</span>
+                        <span class="jp-content">月間学生数</span>
                     </div>
                     <div class="text-sm text-gray-500">
                         <span class="en-content">Strictly limited for high quality</span>
                         <span class="mm-content">အရည်အသွေးထိန်းသိမ်းရန် အယောက် ၂၀ မှ ၃၀ သာ ကန့်သတ်လက်ခံသည်</span>
+                        <span class="jp-content">高品質維持のための厳格な人数制限</span>
                     </div>
                 </div>
 
@@ -236,7 +279,11 @@
                                 <i class="fa-solid fa-award"></i>
                             </div>
                             <div>
-                                <p class="text-sm text-gray-500 font-medium"><span class="en-content">Since</span><span class="mm-content">စတင်တည်ထောင်ခဲ့သည့်နှစ်</span></p>
+                                <p class="text-sm text-gray-500 font-medium">
+                                    <span class="en-content">Since</span>
+                                    <span class="mm-content">စတင်တည်ထောင်ခဲ့သည့်နှစ်</span>
+                                    <span class="jp-content">設立</span>
+                                </p>
                                 <p class="text-2xl font-heading font-bold text-gray-900">2016</p>
                             </div>
                         </div>
@@ -245,24 +292,31 @@
 
                 <div class="w-full lg:w-1/2">
                     <span class="text-primary-600 font-semibold tracking-wider uppercase text-xs mb-3 block">
-                        <span class="en-content">Our History</span><span class="mm-content">ကျောင်းသမိုင်းကြောင်း</span>
+                        <span class="en-content">Our History</span>
+                        <span class="mm-content">ကျောင်းသမိုင်းကြောင်း</span>
+                        <span class="jp-content">私たちの歴史</span>
                     </span>
                     <h2 class="font-heading text-3xl lg:text-4xl font-bold text-gray-900 mb-6 leading-tight">
                         <span class="en-content">Building Futures Since 2016</span>
                         <span class="mm-content">၂၀၁၆ ခုနှစ်မှစ၍ နိုင်ငံတကာအဆင့်မီ သင်ကြားပေးလျက်ရှိပါသည်</span>
+                        <span class="jp-content">2016年からの未来構築</span>
                     </h2>
                     <div class="space-y-4 text-gray-600 leading-relaxed mb-8">
                         <p>
                             <span class="en-content">Established in 2016, FUTURE Foreign Languages School is dedicated to empowering youth through expert Japanese language education. Whether you aim to study abroad, advance your career, or prepare your employees for international standards, our highly skilled teachers are here to take responsibility for your success.</span>
                             <span class="mm-content">FUTURE Foreign Languages School ကို ၂၀၁၆ ခုနှစ်မှစတင်တည်ထောင်ခဲ့ပြီး ယနေ့ထက်တိုင် ကျွမ်းကျင်သောဆရာ၊ ဆရာမများဖြင့် Japanese ဘာသာစကားကို စနစ်တကျ သင်ကြားပေးလျက်ရှိပါသည်။</span>
+                            <span class="jp-content">2016年に設立されたフューチャー外国語学校は、専門的な日本語教育を通じて若者の能力向上に尽力しています。留学、キャリアアップ、または国際基準に向けた従業員の育成など、私たちの熟練した教師陣が皆様の成功に責任を持ちます。</span>
                         </p>
                         <p>
                             <span class="en-content">We ensure every student becomes truly proficient, opening doors to a brighter future in Japan.</span>
                             <span class="mm-content">လူငယ်များ ဂျပန်နိုင်ငံသို့ ပညာတော်သင်သွားရောက်ရန်၊ လုပ်ငန်းခွင်ဝင်ရောက်မည့်သူများ အရည်အသွေးမြှင့်တင်ရန်နှင့် အမှန်တကယ် ကျွမ်းကျင်တတ်မြောက်စေရေးအတွက် တာဝန်ယူ သင်ကြားပေးနေပါသည်။</span>
+                            <span class="jp-content">すべての学生が真に熟達し、日本での明るい未来への扉を開くことを確実にお約束します。</span>
                         </p>
                     </div>
                     <a href="about.html" class="inline-flex items-center font-semibold text-primary-600 hover:text-primary-700 group transition-colors">
-                        <span class="en-content">Read Full Story</span><span class="mm-content">အပြည့်အစုံ ဖတ်ရန်</span>
+                        <span class="en-content">Read Full Story</span>
+                        <span class="mm-content">အပြည့်အစုံ ဖတ်ရန်</span>
+                        <span class="jp-content">詳細を読む</span>
                         <i class="fa-solid fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform"></i>
                     </a>
                 </div>
@@ -277,16 +331,18 @@
                 <span class="text-primary-600 font-semibold tracking-wider uppercase text-xs mb-3 block">
                     <span class="en-content">Explore Our Hub</span>
                     <span class="mm-content">အချက်အလက်များ လေ့လာရန်</span>
+                    <span class="jp-content">ハブを探索する</span>
                 </span>
                 <h2 class="font-heading text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
                     <span class="en-content">Everything You Need in One Place</span>
                     <span class="mm-content">သင်သိလိုသမျှ အချက်အလက်များ</span>
+                    <span class="jp-content">必要なものがすべて1か所に</span>
                 </h2>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 
-                <!-- Hub Card 1: Programs -->
+                <!-- Hub Card 1 -->
                 <a href="programs.html" class="group block bg-gray-50 rounded-2xl p-8 border border-gray-100 hover:bg-white hover:border-primary-200 hover:shadow-card transition-all duration-300 relative overflow-hidden">
                     <div class="absolute top-0 right-0 w-24 h-24 bg-blue-100 rounded-bl-full -z-10 group-hover:bg-blue-200 transition-colors"></div>
                     <div class="w-14 h-14 bg-white rounded-full flex items-center justify-center text-primary-600 text-2xl shadow-sm mb-6 border border-gray-100 group-hover:scale-110 transition-transform">
@@ -295,17 +351,22 @@
                     <h3 class="font-heading font-bold text-xl text-gray-900 mb-3 group-hover:text-primary-600 transition-colors">
                         <span class="en-content">Courses & Fees</span>
                         <span class="mm-content">သင်တန်းနှင့် အချိန်ဇယားများ</span>
+                        <span class="jp-content">コースと料金</span>
                     </h3>
                     <p class="text-sm text-gray-500 mb-4">
                         <span class="en-content">View our JLPT classes, schedules, tuition fees, and special student visa training programs.</span>
                         <span class="mm-content">N5 မှ N1 အထိ အတန်းချိန်များ၊ သင်တန်းကြေးများနှင့် ဂျပန်သွားမည့်သူများအတွက် အထူးအတန်းများ။</span>
+                        <span class="jp-content">JLPTクラス、スケジュール、授業料、学生ビザ特別トレーニングプログラムをご覧ください。</span>
                     </p>
                     <span class="text-primary-600 font-medium text-sm flex items-center">
-                        <span class="en-content">Explore</span><span class="mm-content">ဝင်ရောက်ကြည့်ရှုရန်</span> <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+                        <span class="en-content">Explore</span>
+                        <span class="mm-content">ဝင်ရောက်ကြည့်ရှုရန်</span>
+                        <span class="jp-content">詳細を見る</span>
+                        <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
                     </span>
                 </a>
 
-                <!-- Hub Card 2: Success Stories -->
+                <!-- Hub Card 2 -->
                 <a href="stories.html" class="group block bg-gray-50 rounded-2xl p-8 border border-gray-100 hover:bg-white hover:border-primary-200 hover:shadow-card transition-all duration-300 relative overflow-hidden">
                     <div class="absolute top-0 right-0 w-24 h-24 bg-blue-100 rounded-bl-full -z-10 group-hover:bg-blue-200 transition-colors"></div>
                     <div class="w-14 h-14 bg-white rounded-full flex items-center justify-center text-primary-600 text-2xl shadow-sm mb-6 border border-gray-100 group-hover:scale-110 transition-transform">
@@ -314,17 +375,22 @@
                     <h3 class="font-heading font-bold text-xl text-gray-900 mb-3 group-hover:text-primary-600 transition-colors">
                         <span class="en-content">Success Stories</span>
                         <span class="mm-content">ကျောင်းသားများ၏ အောင်မြင်မှု</span>
+                        <span class="jp-content">成功事例</span>
                     </h3>
                     <p class="text-sm text-gray-500 mb-4">
                         <span class="en-content">See the proof. Browse COE approvals, student visas, and life inside our classrooms.</span>
                         <span class="mm-content">ဂျပန်ကျောင်းများမှ ချထားပေးသော COE ဗီဇာများ၊ အထောက်အထားများနှင့် လှုပ်ရှားမှုပုံရိပ်များ။</span>
+                        <span class="jp-content">実績をご覧ください。COEの承認、学生ビザ、教室での様子をご覧いただけます。</span>
                     </p>
                     <span class="text-primary-600 font-medium text-sm flex items-center">
-                        <span class="en-content">View Proofs</span><span class="mm-content">ဝင်ရောက်ကြည့်ရှုရန်</span> <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+                        <span class="en-content">View Proofs</span>
+                        <span class="mm-content">ဝင်ရောက်ကြည့်ရှုရန်</span>
+                        <span class="jp-content">実績を見る</span>
+                        <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
                     </span>
                 </a>
 
-                <!-- Hub Card 3: Contact/Registration -->
+                <!-- Hub Card 3 -->
                 <a href="contact.html" class="group block bg-primary-900 rounded-2xl p-8 border border-primary-800 hover:bg-primary-950 hover:shadow-xl hover:shadow-primary-900/20 transition-all duration-300 relative overflow-hidden">
                     <div class="absolute top-0 right-0 w-24 h-24 bg-primary-800 rounded-bl-full -z-10 transition-colors"></div>
                     <div class="w-14 h-14 bg-primary-800 rounded-full flex items-center justify-center text-white text-2xl shadow-sm mb-6 border border-primary-700 group-hover:scale-110 transition-transform">
@@ -333,13 +399,18 @@
                     <h3 class="font-heading font-bold text-xl text-white mb-3">
                         <span class="en-content">Apply / Contact Us</span>
                         <span class="mm-content">ဆက်သွယ်စုံစမ်းရန်</span>
+                        <span class="jp-content">お申し込み / お問い合わせ</span>
                     </h3>
                     <p class="text-sm text-blue-100 mb-4">
                         <span class="en-content">Ready to start your journey? Find our location, phone numbers, and get in touch today.</span>
                         <span class="mm-content">သင်တန်းအပ်နှံရန်အတွက် ကျောင်းတည်နေရာ၊ ဖုန်းနံပါတ်များနှင့် အလွယ်တကူ ဆက်သွယ်လိုက်ပါ။</span>
+                        <span class="jp-content">旅を始める準備はできましたか？私たちの場所、電話番号を確認し、今日ご連絡ください。</span>
                     </p>
                     <span class="text-blue-200 font-medium text-sm flex items-center">
-                        <span class="en-content">Contact Now</span><span class="mm-content">ဆက်သွယ်မည်</span> <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+                        <span class="en-content">Contact Now</span>
+                        <span class="mm-content">ဆက်သွယ်မည်</span>
+                        <span class="jp-content">今すぐ連絡する</span>
+                        <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
                     </span>
                 </a>
 
@@ -348,66 +419,83 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-white pt-24 pb-12 border-t border-gray-200">
+    <footer class="bg-white pt-20 pb-10 border-t border-gray-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 mb-16">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 mb-16">
                 
+                <!-- Column 1: Brand & About (Span 4) -->
                 <div class="lg:col-span-4 pr-0 lg:pr-8">
                     <div class="flex items-center gap-3 mb-6">
-                         <a href="index.html" class="flex-shrink-0 flex items-center gap-3 group">
-                    <img class="w-16 rounded-lg" src="./img/logo.jpg" alt="">
-                    <div class="flex flex-col">
-                        <span class="font-heading font-bold text-xl leading-none text-primary-900 tracking-tight">FUTURE FOREIGN</span>
-                        <span class="text-[10px] uppercase font-semibold text-gray-500 tracking-widest mt-1">Language School</span>
+                        <a href="index.html" class="flex-shrink-0 flex items-center gap-3 group">
+                            <img class="w-16 rounded-lg" src="./img/logo.jpg" alt="FUTURE Logo">
+                            <div class="flex flex-col">
+                                <span class="font-heading font-bold text-xl leading-none text-primary-900 tracking-tight">FUTURE FOREIGN</span>
+                                <span class="text-[10px] uppercase font-semibold text-gray-500 tracking-widest mt-1">Language School</span>
+                            </div>
+                        </a>
                     </div>
-                </a>
-                    </div>
-                    <p class="text-gray-500 text-sm leading-relaxed mb-8">
+                    <p class="text-gray-500 text-sm leading-relaxed mb-6">
                         <span class="en-content">Established in 2016. Empowering youth to take their next big step. We provide expert training in Japanese to fast-track your journey abroad.</span>
                         <span class="mm-content">၂၀၁၆ မှစ၍ လူငယ်များ၏ အနာဂတ် ခြေလှမ်းသစ်အတွက် Japan ဘာသာစကားများကို အကောင်းဆုံး သင်ကြားပေးနေသော ကျောင်းဖြစ်ပါသည်။</span>
+                        <span class="jp-content">2016年設立。若者が次の大きな一歩を踏み出す力を与えます。日本への旅を早めるための専門的な日本語トレーニングを提供します。</span>
                     </p>
-                    <div class="flex space-x-4">
-                        <a href="https://www.facebook.com/share/1D2ro44sPV/?mibextid=wwXIfr" class="w-10 h-10 rounded-full bg-gray-50 border border-gray-200 flex items-center justify-center text-gray-600 hover:bg-primary-600 hover:text-white hover:border-transparent transition-all shadow-sm">
+                    
+                    <!-- Social Icons with Brand Colors -->
+                    <div class="flex flex-wrap gap-3">
+                        <a href="https://www.facebook.com/share/1D2ro44sPV/?mibextid=wwXIfr" class="w-10 h-10 rounded-full bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-600 hover:bg-blue-600 hover:text-white hover:border-transparent transition-all shadow-sm">
                             <i class="fa-brands fa-facebook-f"></i>
                         </a>
-                        <a href="mailto:ahnargard2016.jp@gmail.com" class="w-10 h-10 rounded-full bg-gray-50 border border-gray-200 flex items-center justify-center text-gray-600 hover:bg-primary-600 hover:text-white hover:border-transparent transition-all shadow-sm">
-                            <i class="fas fa-envelope"></i>
+                        <a href="viber://contact?number=%2B959254109605" class="w-10 h-10 rounded-full bg-[#7360f2]/10 border border-[#7360f2]/20 flex items-center justify-center text-[#7360f2] hover:bg-[#7360f2] hover:text-white hover:border-transparent transition-all shadow-sm">
+                            <i class="fa-brands fa-viber"></i>
+                        </a>
+                        <a href="https://line.me/ti/p/mUxb-dMWY-" target="_blank" class="w-10 h-10 rounded-full bg-[#00c300]/10 border border-[#00c300]/20 flex items-center justify-center text-[#00c300] hover:bg-[#00c300] hover:text-white hover:border-transparent transition-all shadow-sm">
+                            <i class="fa-brands fa-line text-lg"></i>
+                        </a>
+                        <a href="mailto:ahnargard2016.jp@gmail.com" class="w-10 h-10 rounded-full bg-[#ea4335]/10 border border-[#ea4335]/20 flex items-center justify-center text-[#ea4335] hover:bg-[#ea4335] hover:text-white hover:border-transparent transition-all shadow-sm">
+                            <i class="fa-solid fa-envelope"></i>
                         </a>
                     </div>
                 </div>
 
+                <!-- Column 2: Quick Links (Span 2) -->
                 <div class="lg:col-span-2">
                     <h4 class="font-heading text-lg font-bold mb-6 text-gray-900">
-                        <span class="en-content">Quick Links</span><span class="mm-content">လင့်ခ်များ</span>
+                        <span class="en-content">Quick Links</span>
+                        <span class="mm-content">လင့်ခ်များ</span>
+                        <span class="jp-content">クイックリンク</span>
                     </h4>
                     <ul class="space-y-4 text-sm text-gray-500">
-                        <li><a href="index.html" class="text-primary-600 font-medium"><span class="en-content">Home</span><span class="mm-content">ပင်မစာမျက်နှာ</span></a></li>
-                        <li><a href="about.html" class="hover:text-primary-600 transition-colors"><span class="en-content">About Us</span><span class="mm-content">ကျောင်းအကြောင်း</span></a></li>
-                        <li><a href="programs.html" class="hover:text-primary-600 transition-colors"><span class="en-content">Our Programs</span><span class="mm-content">သင်တန်းများ</span></a></li>
-                        <li><a href="stories.html" class="hover:text-primary-600 transition-colors"><span class="en-content">Success Stories</span><span class="mm-content">အောင်မြင်မှုများ</span></a></li>
-                        <li><a href="contact.html" class="hover:text-primary-600 transition-colors"><span class="en-content">Contact Us</span><span class="mm-content">ဆက်သွယ်ရန်</span></a></li>
+                        <li><a href="index.html" class="text-primary-600 font-medium"><span class="en-content">Home</span><span class="mm-content">ပင်မစာမျက်နှာ</span><span class="jp-content">ホーム</span></a></li>
+                        <li><a href="about.html" class="hover:text-primary-600 transition-colors"><span class="en-content">About Us</span><span class="mm-content">ကျောင်းအကြောင်း</span><span class="jp-content">学校について</span></a></li>
+                        <li><a href="programs.html" class="hover:text-primary-600 transition-colors"><span class="en-content">Programs</span><span class="mm-content">သင်တန်းများ</span><span class="jp-content">コース</span></a></li>
+                        <li><a href="stories.html" class="hover:text-primary-600 transition-colors"><span class="en-content">Success Stories</span><span class="mm-content">အောင်မြင်မှုများ</span><span class="jp-content">成功事例</span></a></li>
+                        <li><a href="contact.html" class="hover:text-primary-600 transition-colors"><span class="en-content">Contact Us</span><span class="mm-content">ဆက်သွယ်ရန်</span><span class="jp-content">お問い合わせ</span></a></li>
                     </ul>
                 </div>
 
+                <!-- Column 3: Contact Details (Span 3) -->
                 <div class="lg:col-span-3">
                     <h4 class="font-heading text-lg font-bold mb-6 text-gray-900">
-                        <span class="en-content">Contact Details</span><span class="mm-content">ဆက်သွယ်ရန်</span>
+                        <span class="en-content">Contact Info</span>
+                        <span class="mm-content">ဆက်သွယ်ရန်</span>
+                        <span class="jp-content">連絡先</span>
                     </h4>
-                    <ul class="space-y-6 text-sm text-gray-600">
+                    <ul class="space-y-5 text-sm text-gray-600">
                         <li class="flex items-start">
                             <div class="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center text-primary-600 mr-3 flex-shrink-0 mt-0.5">
                                 <i class="fa-solid fa-location-dot text-xs"></i>
                             </div>
-                            <a href="https://maps.app.goo.gl/icd9FSagsgRAXYUT9" class="leading-relaxed">
+                            <a href="https://maps.app.goo.gl/icd9FSagsgRAXYUT9" class="leading-relaxed hover:text-primary-600 transition-colors">
                                 <span class="en-content">No. 445, Myin Taw Thar Main Road,<br>3/Man Pyay Ward, Thaketa Township,<br>Yangon.</span>
                                 <span class="mm-content">အမှတ် (၄၄၅)၊ မြင်တော်သာလမ်းမကြီး၊<br>၃/မာန်ပြေရပ်ကွက်၊ သာကေတမြို့နယ်၊<br>ရန်ကုန်မြို့။</span>
+                                <span class="jp-content">ヤンゴン市タケタ郡区マンピェ地区3<br>ミンタワター本通り 445番地</span>
                             </a>
                         </li>
                         <li class="flex items-start">
                             <div class="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center text-primary-600 mr-3 flex-shrink-0 mt-0.5">
                                 <i class="fa-solid fa-phone text-xs"></i>
                             </div>
-                            <div class="flex flex-col space-y-1 font-medium">
+                            <div class="flex flex-col space-y-1.5 font-medium">
                                 <a href="tel:01547106" class="hover:text-primary-600 transition-colors">01-547106</a>
                                 <a href="tel:09254109605" class="hover:text-primary-600 transition-colors">09-254109605</a>
                                 <a href="tel:09254006723" class="hover:text-primary-600 transition-colors">09-254006723</a>
@@ -416,18 +504,24 @@
                     </ul>
                 </div>
 
+                <!-- Column 4: Call to Action (Span 3) -->
                 <div class="lg:col-span-3">
                     <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100 shadow-sm">
                         <h4 class="font-heading text-base font-bold mb-3 text-gray-900">
-                            <span class="en-content">Ready to start?</span><span class="mm-content">စုံစမ်းလိုပါသလား?</span>
+                            <span class="en-content">Ready to start?</span>
+                            <span class="mm-content">စုံစမ်းလိုပါသလား?</span>
+                            <span class="jp-content">始める準備はできましたか？</span>
                         </h4>
                         <p class="text-sm text-gray-500 mb-5 leading-relaxed">
                             <span class="en-content">We are ready to guide you to your future in Japan. Call us directly.</span>
                             <span class="mm-content">သင်တန်းအပ်နှံရန်နှင့် အသေးစိတ်သိရှိလိုပါက ဖုန်းဖြင့် တိုက်ရိုက် ဆက်သွယ်နိုင်ပါသည်။</span>
+                            <span class="jp-content">日本での未来をご案内する準備ができています。直接お電話ください。</span>
                         </p>
-                        <a href="contact.html" class="w-full bg-primary-900 text-white font-semibold py-3 rounded-lg hover:bg-primary-950 transition-all text-sm shadow-md flex justify-center items-center active:scale-95 gap-2">
+                        <a href="tel:09254109605" class="w-full bg-primary-900 text-white font-semibold py-3 rounded-lg hover:bg-primary-950 transition-all text-sm shadow-md flex justify-center items-center active:scale-95 gap-2">
                             <i class="fa-solid fa-phone-volume text-sm"></i>
-                            <span class="en-content">Call Us Now</span><span class="mm-content">ဖုန်းဆက်စုံစမ်းမည်</span>
+                            <span class="en-content">Call Us Now</span>
+                            <span class="mm-content">ဖုန်းဆက်စုံစမ်းမည်</span>
+                            <span class="jp-content">今すぐ電話する</span>
                         </a>
                     </div>
                 </div>
@@ -441,43 +535,59 @@
     </footer>
 
     <script>
-        // Language Toggle Logic
+        // 3-Language Toggle Logic (EN -> MM -> JP -> EN)
         function toggleLanguage() {
             const htmlTag = document.documentElement;
-            if (htmlTag.getAttribute('lang') === 'en') {
-                htmlTag.setAttribute('lang', 'mm');
-                localStorage.setItem('preferredLanguage', 'mm');
-            } else {
-                htmlTag.setAttribute('lang', 'en');
-                localStorage.setItem('preferredLanguage', 'en');
+            let currentLang = htmlTag.getAttribute('lang') || 'en';
+            let nextLang = 'en';
+
+            if (currentLang === 'en') {
+                nextLang = 'mm';
+            } else if (currentLang === 'mm') {
+                nextLang = 'jp';
+            } else if (currentLang === 'jp') {
+                nextLang = 'en';
             }
+
+            htmlTag.setAttribute('lang', nextLang);
+            localStorage.setItem('preferredLanguage', nextLang);
         }
 
+        // DOMContentLoaded Ensure logic runs only after HTML elements are fully parsed
         document.addEventListener('DOMContentLoaded', () => {
+            // Re-apply language safely
             const savedLang = localStorage.getItem('preferredLanguage');
-            if (savedLang) {
+            if (savedLang && document.documentElement.getAttribute('lang') !== savedLang) {
                 document.documentElement.setAttribute('lang', savedLang);
+            }
+
+            // Mobile menu logic with null safety checks to prevent 'Cannot read properties of null' errors
+            const btn = document.getElementById('mobile-menu-btn');
+            const menu = document.getElementById('mobile-menu');
+            
+            if (btn && menu) {
+                const icon = btn.querySelector('i');
+                if (icon) {
+                    btn.addEventListener('click', () => {
+                        menu.classList.toggle('hidden');
+                        icon.classList.toggle('fa-bars');
+                        icon.classList.toggle('fa-xmark');
+                    });
+                }
             }
         });
 
-        const btn = document.getElementById('mobile-menu-btn');
-        const menu = document.getElementById('mobile-menu');
-        const icon = btn.querySelector('i');
-
-        btn.addEventListener('click', () => {
-            menu.classList.toggle('hidden');
-            icon.classList.toggle('fa-bars');
-            icon.classList.toggle('fa-xmark');
-        });
-
+        // Sticky Navbar logic
         window.addEventListener('scroll', () => {
             const nav = document.getElementById('navbar');
-            if (window.scrollY > 20) {
-                nav.classList.add('shadow-sm');
-                nav.style.background = 'rgba(255, 255, 255, 0.98)';
-            } else {
-                nav.classList.remove('shadow-sm');
-                nav.style.background = 'rgba(255, 255, 255, 0.92)';
+            if (nav) {
+                if (window.scrollY > 20) {
+                    nav.classList.add('shadow-sm');
+                    nav.style.background = 'rgba(255, 255, 255, 0.98)';
+                } else {
+                    nav.classList.remove('shadow-sm');
+                    nav.style.background = 'rgba(255, 255, 255, 0.92)';
+                }
             }
         });
     </script>

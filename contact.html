@@ -7,19 +7,26 @@
     <!-- Premium SEO & Home Tags -->
     <title>Contact Us - FUTURE Foreign Language School</title>
     <meta name="description" content="Get in touch with FUTURE Foreign Language School. Find our location in Thaketa, Yangon, and our contact details.">
+    <link rel="icon" href="./img/logo.jpg">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="icon" href="./img/logo.jpg">
-
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@500;600;700;800&family=Padauk:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Noto+Sans+JP:wght@400;700;900&family=Poppins:wght@500;600;700;800&family=Padauk:wght@400;700&display=swap" rel="stylesheet">
     
     <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Instant Language Loader to prevent flickering -->
+    <script>
+        (function() {
+            const savedLang = localStorage.getItem('preferredLanguage') || 'en';
+            document.documentElement.setAttribute('lang', savedLang);
+        })();
+    </script>
 
     <script>
         tailwind.config = {
@@ -28,11 +35,14 @@
                     fontFamily: {
                         sans: ['Inter', 'Padauk', 'sans-serif'],
                         heading: ['Poppins', 'Padauk', 'sans-serif'],
+                        jp: ['Noto Sans JP', 'sans-serif'],
                     },
                     colors: {
                         primary: {
                             50: '#eff6ff', 100: '#dbeafe', 500: '#3b82f6', 600: '#2563eb', 800: '#1e40af', 900: '#1e3a8a', 950: '#172554',
-                        }
+                        },
+                        viber: '#7360f2',
+                        line: '#00c300'
                     },
                     boxShadow: {
                         'soft': '0 20px 40px -15px rgba(0,0,0,0.05)',
@@ -50,11 +60,17 @@
             background-size: cover; background-position: center;
         }
         
-        /* LANGUAGE SWITCHER CSS LOGIC */
-        :lang(en) .mm-content { display: none !important; }
-        :lang(mm) .en-content { display: none !important; }
-        .en-content, .mm-content { animation: fadeIn 0.4s ease-in-out; }
+        /* 3-LANGUAGE SWITCHER CSS LOGIC */
+        :lang(en) .mm-content, :lang(en) .jp-content { display: none !important; }
+        :lang(mm) .en-content, :lang(mm) .jp-content { display: none !important; }
+        :lang(jp) .en-content, :lang(jp) .mm-content { display: none !important; }
+        
+        .en-content, .mm-content, .jp-content { animation: fadeIn 0.4s ease-in-out; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* QR Animation */
+        .qr-card { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .qr-card:hover { transform: translateY(-8px); }
     </style>
 </head>
 <body class="font-sans text-gray-600 bg-gray-50/50">
@@ -63,9 +79,8 @@
     <nav class="fixed w-full z-50 glass-nav border-b border-gray-100 transition-all duration-300" id="navbar">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
-                <!-- Brand -->
                 <a href="index.html" class="flex-shrink-0 flex items-center gap-3 group">
-                      <img class="w-16 rounded-lg" src="./img/logo.jpg" alt="">
+                    <img class="w-16 rounded-lg" src="./img/logo.jpg" alt="FUTURE Logo">
                     <div class="flex flex-col">
                         <span class="font-heading font-bold text-xl leading-none text-primary-900 tracking-tight">FUTURE FOREIGN</span>
                         <span class="text-[10px] uppercase font-semibold text-gray-500 tracking-widest mt-1">Language School</span>
@@ -74,19 +89,29 @@
 
                 <!-- Desktop Nav -->
                 <div class="hidden lg:flex items-center space-x-6 xl:space-x-8">
-                    <a href="index.html" class="text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors"><span class="en-content">Home</span><span class="mm-content">ပင်မစာမျက်နှာ</span></a>
-                    <a href="about.html" class="text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors"><span class="en-content">About Us</span><span class="mm-content">ကျောင်းအကြောင်း</span></a>
-                    <a href="programs.html" class="text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors"><span class="en-content">Programs</span><span class="mm-content">သင်တန်းများ</span></a>
-                    <a href="stories.html" class="text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors"><span class="en-content">Success Stories</span><span class="mm-content">အောင်မြင်မှုများ</span></a>
-                    <!-- Active Link -->
-                    <a href="contact.html" class="text-sm font-medium text-primary-600 transition-colors"><span class="en-content">Contact</span><span class="mm-content">ဆက်သွယ်ရန်</span></a>
+                    <a href="index.html" class="text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors">
+                        <span class="en-content">Home</span><span class="mm-content">ပင်မစာမျက်နှာ</span><span class="jp-content">ホーム</span>
+                    </a>
+                    <a href="about.html" class="text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors">
+                        <span class="en-content">About Us</span><span class="mm-content">ကျောင်းအကြောင်း</span><span class="jp-content">学校について</span>
+                    </a>
+                    <a href="programs.html" class="text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors">
+                        <span class="en-content">Programs</span><span class="mm-content">သင်တန်းများ</span><span class="jp-content">コース</span>
+                    </a>
+                    <a href="stories.html" class="text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors">
+                        <span class="en-content">Success Stories</span><span class="mm-content">အောင်မြင်မှုများ</span><span class="jp-content">成功事例</span>
+                    </a>
+                    <a href="contact.html" class="text-sm font-medium text-primary-600 transition-colors">
+                        <span class="en-content">Contact</span><span class="mm-content">ဆက်သွယ်ရန်</span><span class="jp-content">お問い合わせ</span>
+                    </a>
                     
                     <div class="pl-6 border-l border-gray-200 flex items-center space-x-4">
                         <button onclick="toggleLanguage()" class="flex items-center space-x-2 text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors bg-gray-100 hover:bg-gray-200 px-3 py-1.5 rounded-full">
                             <i class="fa-solid fa-language text-lg text-primary-600"></i>
-                            <span class="en-content">မြန်မာဘာသာ</span><span class="mm-content">English</span>
+                            <span class="en-content">မြန်မာဘာသာ</span>
+                            <span class="mm-content">日本語</span>
+                            <span class="jp-content">English</span>
                         </button>
-
                     </div>
                 </div>
 
@@ -105,13 +130,20 @@
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="lg:hidden hidden bg-white border-t border-gray-100 shadow-2xl absolute w-full transition-all">
             <div class="px-4 pt-4 pb-8 space-y-2 flex flex-col">
-                <a href="index.html" class="block px-4 py-3 rounded-lg text-base font-medium text-gray-700 hover:bg-primary-50"><span class="en-content">Home</span><span class="mm-content">ပင်မစာမျက်နှာ</span></a>
-                <a href="about.html" class="block px-4 py-3 rounded-lg text-base font-medium text-gray-700 hover:bg-primary-50"><span class="en-content">About Us</span><span class="mm-content">ကျောင်းအကြောင်း</span></a>
-                <a href="programs.html" class="block px-4 py-3 rounded-lg text-base font-medium text-gray-700 hover:bg-primary-50"><span class="en-content">Programs</span><span class="mm-content">သင်တန်းများ</span></a>
-                <a href="stories.html" class="block px-4 py-3 rounded-lg text-base font-medium text-gray-700 hover:bg-primary-50"><span class="en-content">Success Stories</span><span class="mm-content">အောင်မြင်မှုများ</span></a>
-                <a href="contact.html" class="block px-4 py-3 rounded-lg text-base font-medium text-primary-700 bg-primary-50"><span class="en-content">Contact</span><span class="mm-content">ဆက်သွယ်ရန်</span></a>
-                <a href="tel:09254109605" class="block px-4 py-3 mt-4 text-center rounded-lg text-base font-bold text-white bg-primary-600 hover:bg-primary-700">
-                    <span class="en-content">Call Us</span><span class="mm-content">စုံစမ်းမည်</span>
+                <a href="index.html" class="block px-4 py-3 rounded-lg text-base font-medium text-gray-700 hover:bg-primary-50">
+                    <span class="en-content">Home</span><span class="mm-content">ပင်မစာမျက်နှာ</span><span class="jp-content">ホーム</span>
+                </a>
+                <a href="about.html" class="block px-4 py-3 rounded-lg text-base font-medium text-gray-700 hover:bg-primary-50">
+                    <span class="en-content">About Us</span><span class="mm-content">ကျောင်းအကြောင်း</span><span class="jp-content">学校について</span>
+                </a>
+                <a href="programs.html" class="block px-4 py-3 rounded-lg text-base font-medium text-gray-700 hover:bg-primary-50">
+                    <span class="en-content">Programs</span><span class="mm-content">သင်တန်းများ</span><span class="jp-content">コース</span>
+                </a>
+                <a href="stories.html" class="block px-4 py-3 rounded-lg text-base font-medium text-gray-700 hover:bg-primary-50">
+                    <span class="en-content">Success Stories</span><span class="mm-content">အောင်မြင်မှုများ</span><span class="jp-content">成功事例</span>
+                </a>
+                <a href="contact.html" class="block px-4 py-3 rounded-lg text-base font-medium text-primary-700 bg-primary-50">
+                    <span class="en-content">Contact</span><span class="mm-content">ဆက်သွယ်ရန်</span><span class="jp-content">お問い合わせ</span>
                 </a>
             </div>
         </div>
@@ -123,18 +155,20 @@
             <h1 class="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-white leading-[1.2] mb-6 tracking-tight">
                 <span class="en-content">Get in <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-blue-100">Touch.</span></span>
                 <span class="mm-content">ဆက်သွယ် <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-blue-100">စုံစမ်းရန်</span></span>
+                <span class="jp-content">お問い合わせ<span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-blue-100">ください。</span></span>
             </h1>
             <p class="text-lg text-blue-100/90 max-w-2xl mx-auto leading-relaxed font-light mb-8">
                 <span class="en-content">Have questions about our Japanese language classes or student visas? We are always ready to guide you. Call us or visit our school directly.</span>
                 <span class="mm-content">ဂျပန်စာသင်တန်းများနှင့် Student Visa အကြောင်း သိရှိလိုပါက အချိန်မရွေး ဖုန်းခေါ်ဆို၍ဖြစ်စေ၊ ကျောင်းသို့ လူကိုယ်တိုင် လာရောက်၍ဖြစ်စေ ဆက်သွယ်စုံစမ်းနိုင်ပါသည်။</span>
+                <span class="jp-content">日本語の授業や学生ビザについてご質問はありますか？いつでもご案内する準備ができています。お電話または直接ご来校ください。</span>
             </p>
         </div>
     </section>
 
-    <!-- Dynamic Contact Cards & Map Section -->
+    <!-- Contact Info Cards -->
     <section class="py-12 -mt-20 lg:-mt-24 relative z-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-12">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 
                 <!-- Card 1: Map Link & Address -->
                 <div class="bg-white rounded-[2rem] p-8 shadow-card border border-gray-100 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
@@ -143,18 +177,22 @@
                             <i class="fa-solid fa-location-dot"></i>
                         </div>
                         <h3 class="font-heading font-bold text-gray-900 text-xl mb-3">
-                            <span class="en-content">Our Location</span><span class="mm-content">ကျောင်းတည်နေရာ</span>
+                            <span class="en-content">Our Location</span>
+                            <span class="mm-content">ကျောင်းတည်နေရာ</span>
+                            <span class="jp-content">私たちの場所</span>
                         </h3>
-                          <a href="https://maps.app.goo.gl/icd9FSagsgRAXYUT9" class="leading-relaxed">
-                                <span class="en-content">No. 445, Myin Taw Thar Main Road,<br>3/Man Pyay Ward, Thaketa Township,<br>Yangon.</span>
-                                <span class="mm-content">အမှတ် (၄၄၅)၊ မြင်တော်သာလမ်းမကြီး၊<br>၃/မာန်ပြေရပ်ကွက်၊ သာကေတမြို့နယ်၊<br>ရန်ကုန်မြို့။</span>
-                            </a>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-6 font-medium">
+                            <span class="en-content">No. 445, Myin Taw Thar Main Road,<br>3/Man Pyay Ward, Thaketa Township,<br>Yangon, Myanmar.</span>
+                            <span class="mm-content">အမှတ် (၄၄၅)၊ မြင်တော်သာလမ်းမကြီး၊<br>၃/မာန်ပြေရပ်ကွက်၊ သာကေတမြို့နယ်၊<br>ရန်ကုန်မြို့။</span>
+                            <span class="jp-content">ヤンゴン市タケタ郡区マンピェ地区3<br>ミンタワター本通り 445番地</span>
+                        </p>
                     </div>
                     
-                    <!-- Direct Google Maps Clickable Link -->
                     <a href="https://maps.app.goo.gl/FmSQuy4M6diQ8CKT8" target="_blank" class="w-full bg-primary-600 text-white text-sm font-semibold py-3.5 rounded-xl hover:bg-primary-700 transition-all shadow-md flex justify-center items-center gap-2 group active:scale-95">
                         <i class="fa-solid fa-map-location-dot group-hover:scale-110 transition-transform"></i>
-                        <span class="en-content">Open in Google Maps</span><span class="mm-content">မြေပုံ လမ်းညွှန်ကြည့်ရန်</span>
+                        <span class="en-content">Open in Google Maps</span>
+                        <span class="mm-content">မြေပုံ လမ်းညွှန်ကြည့်ရန်</span>
+                        <span class="jp-content">Googleマップで開く</span>
                     </a>
                 </div>
 
@@ -165,7 +203,9 @@
                         <i class="fa-solid fa-phone-volume"></i>
                     </div>
                     <h3 class="font-heading font-bold text-white text-xl mb-6">
-                        <span class="en-content">Call Us Directly</span><span class="mm-content">ဖုန်းဖြင့် ဆက်သွယ်ရန်</span>
+                        <span class="en-content">Call Us Directly</span>
+                        <span class="mm-content">ဖုန်းဖြင့် ဆက်သွယ်ရန်</span>
+                        <span class="jp-content">お電話はこちら</span>
                     </h3>
                     <div class="flex flex-col space-y-4 text-base font-semibold text-blue-50">
                         <a href="tel:01547106" class="hover:text-blue-300 transition-colors flex items-center justify-center gap-2">
@@ -187,30 +227,107 @@
                             <i class="fa-regular fa-clock"></i>
                         </div>
                         <h3 class="font-heading font-bold text-gray-900 text-xl mb-3">
-                            <span class="en-content">Office Hours</span><span class="mm-content">ရုံးချိန် / ကျောင်းချိန်</span>
+                            <span class="en-content">Office Hours</span>
+                            <span class="mm-content">ရုံးချိန် / ကျောင်းချိန်</span>
+                            <span class="jp-content">営業時間</span>
                         </h3>
                         <p class="text-gray-500 text-sm leading-relaxed mb-3 font-medium">
                             <span class="en-content">Monday to Sunday</span>
                             <span class="mm-content">တနင်္လာ မှ တနင်္ဂနွေ အထိ</span>
+                            <span class="jp-content">月曜日から日曜日</span>
                         </p>
                         <p class="text-xl font-bold text-primary-900 font-heading bg-blue-50 py-2 px-4 rounded-lg inline-block">
                             9:00 AM - 4:00 PM
                         </p>
                     </div>
                     
-                    <div class="flex space-x-4 justify-center">
-                        <a href="https://www.facebook.com/share/1D2ro44sPV/?mibextid=wwXIfr" class="w-10 h-10 rounded-full bg-gray-50 border border-gray-200 flex items-center justify-center text-gray-600 hover:bg-primary-600 hover:text-white hover:border-transparent transition-all shadow-sm">
-                            <i class="fa-brands fa-facebook-f"></i>
+                    <div class="flex justify-center gap-3 pt-4 border-t border-gray-100">
+                        <a href="https://www.facebook.com/share/1D2ro44sPV/?mibextid=wwXIfr" class="w-11 h-11 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-600 hover:bg-blue-600 hover:text-white hover:border-transparent transition-all shadow-sm">
+                            <i class="fa-brands fa-facebook-f text-lg"></i>
                         </a>
-                        <a href="mailto:ahnargard2016.jp@gmail.com" class="w-10 h-10 rounded-full bg-gray-50 border border-gray-200 flex items-center justify-center text-gray-600 hover:bg-primary-600 hover:text-white hover:border-transparent transition-all shadow-sm">
-                            <i class="fas fa-envelope"></i>
+                        <a href="viber://contact?number=%2B959254109605" class="w-11 h-11 rounded-xl bg-[#7360f2]/10 border border-[#7360f2]/20 flex items-center justify-center text-[#7360f2] hover:bg-[#7360f2] hover:text-white hover:border-transparent transition-all shadow-sm">
+                            <i class="fa-brands fa-viber text-lg"></i>
                         </a>
                     </div>
                 </div>
 
             </div>
+        </div>
+    </section>
 
-            <!-- Full Width Embedded Map -->
+    <!-- NEW: Digital Connect (QR Codes) Section -->
+    <section class="py-16 bg-white relative z-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10">
+                <span class="text-primary-600 font-semibold tracking-wider uppercase text-xs mb-3 block">
+                    <span class="en-content">Digital Channels</span>
+                    <span class="mm-content">အလွယ်တကူ ဆက်သွယ်ရန်</span>
+                    <span class="jp-content">デジタルチャンネル</span>
+                </span>
+                <h2 class="font-heading text-2xl lg:text-3xl font-bold text-gray-900 mb-2">
+                    <span class="en-content">Scan to Connect</span>
+                    <span class="mm-content">QR ကို Scan ဖတ်၍ ဆက်သွယ်နိုင်ပါသည်</span>
+                    <span class="jp-content">スキャンして接続</span>
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                
+                <!-- Viber QR Card -->
+                <div class="qr-card relative bg-[#7360f2]/5 border border-[#7360f2]/20 rounded-3xl p-8 overflow-hidden group">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-[#7360f2]/20 to-transparent rounded-bl-full -z-10"></div>
+                    
+                    <div class="flex flex-col items-center text-center">
+                        <div class="w-14 h-14 bg-[#7360f2] text-white rounded-full flex items-center justify-center text-2xl mb-4 shadow-md shadow-[#7360f2]/30">
+                            <i class="fa-brands fa-viber"></i>
+                        </div>
+                        <h3 class="font-heading font-bold text-xl text-gray-900 mb-1">Viber</h3>
+                        <p class="text-[#7360f2] font-medium text-sm mb-6">+95 925 410 9605</p>
+                        
+                        <!-- Real Dynamic QR generated from API using the exact number -->
+                        <div class="bg-white p-3 rounded-2xl shadow-sm border border-gray-100 mb-6 group-hover:shadow-md transition-shadow">
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=viber://contact?number=%2B959254109605&color=7360F2" alt="Viber QR Code" class="w-40 h-40 object-contain">
+                        </div>
+                        
+                        <a href="viber://contact?number=%2B959254109605" class="w-full bg-white text-[#7360f2] border border-[#7360f2]/30 font-semibold py-3 rounded-xl hover:bg-[#7360f2] hover:text-white transition-all text-sm shadow-sm active:scale-95">
+                            <span class="en-content">Open in Viber App</span>
+                            <span class="mm-content">Viber ဖြင့် စာပို့မည်</span>
+                            <span class="jp-content">Viberを開く</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- LINE QR Card -->
+                <div class="qr-card relative bg-[#00c300]/5 border border-[#00c300]/20 rounded-3xl p-8 overflow-hidden group">
+                    <div class="absolute top-0 left-0 w-32 h-32 bg-gradient-to-br from-[#00c300]/20 to-transparent rounded-br-full -z-10"></div>
+                    
+                    <div class="flex flex-col items-center text-center">
+                        <div class="w-14 h-14 bg-[#00c300] text-white rounded-full flex items-center justify-center text-2xl mb-4 shadow-md shadow-[#00c300]/30">
+                            <i class="fa-brands fa-line"></i>
+                        </div>
+                        <h3 class="font-heading font-bold text-xl text-gray-900 mb-1">LINE</h3>
+                        <p class="text-[#00c300] font-medium text-sm mb-6">Official Account</p>
+                        
+                        <!-- Real Dynamic QR generated from API using the exact link -->
+                        <div class="bg-white p-3 rounded-2xl shadow-sm border border-gray-100 mb-6 group-hover:shadow-md transition-shadow">
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://line.me/ti/p/mUxb-dMWY-&color=00B900" alt="LINE QR Code" class="w-40 h-40 object-contain">
+                        </div>
+                        
+                        <a href="https://line.me/ti/p/mUxb-dMWY-" target="_blank" class="w-full bg-white text-[#00c300] border border-[#00c300]/30 font-semibold py-3 rounded-xl hover:bg-[#00c300] hover:text-white transition-all text-sm shadow-sm active:scale-95">
+                            <span class="en-content">Open in LINE App</span>
+                            <span class="mm-content">LINE ဖြင့် စာပို့မည်</span>
+                            <span class="jp-content">LINEを開く</span>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="pb-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="bg-white rounded-[2rem] shadow-card border border-gray-100 overflow-hidden relative group h-[450px]">
                 <iframe 
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d52753.51278658589!2d96.11264679460984!3d16.81351026250087!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30c1ed256862c981%3A0xd45c6d7e599cd265!2sFuture%20Foreign%20Language%20School!5e1!3m2!1sen!2smm!4v1780848460534!5m2!1sen!2smm" 
@@ -220,12 +337,12 @@
                     referrerpolicy="no-referrer-when-downgrade">
                 </iframe>
                 
-                <!-- Floating Overlay Link on Map (Optional quick access) -->
                 <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 w-max">
                     <a href="https://maps.app.goo.gl/FmSQuy4M6diQ8CKT8" target="_blank" class="bg-white/95 backdrop-blur-md text-gray-900 text-sm font-bold px-6 py-3.5 rounded-full shadow-xl hover:bg-primary-600 hover:text-white transition-all flex items-center justify-center gap-2 border border-gray-200 hover:border-transparent">
                         <i class="fa-solid fa-location-arrow"></i>
                         <span class="en-content">Get Real-time Directions</span>
                         <span class="mm-content">Google Maps တွင် လမ်းညွှန်ကြည့်ရန်</span>
+                        <span class="jp-content">Googleマップで開く</span>
                     </a>
                 </div>
             </div>
@@ -237,53 +354,72 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 mb-16">
                 
+                <!-- Column 1: Brand & Description (Span 4) -->
                 <div class="lg:col-span-4 pr-0 lg:pr-8">
                     <div class="flex items-center gap-3 mb-6">
-                           <img class="w-16 rounded-lg" src="./img/logo.jpg" alt="">
-                    <div class="flex flex-col">
-                        <span class="font-heading font-bold text-xl leading-none text-primary-900 tracking-tight">FUTURE FOREIGN</span>
-                        <span class="text-[10px] uppercase font-semibold text-gray-500 tracking-widest mt-1">Language School</span>
-                    </div>
+                        <a href="index.html" class="flex-shrink-0 flex items-center gap-3 group">
+                            <img class="w-16 rounded-lg" src="./img/logo.jpg" alt="">
+                            <div class="flex flex-col">
+                                <span class="font-heading font-bold text-xl leading-none text-primary-900 tracking-tight">FUTURE FOREIGN</span>
+                                <span class="text-[10px] uppercase font-semibold text-gray-500 tracking-widest mt-1">Language School</span>
+                            </div>
+                        </a>
                     </div>
                     <p class="text-gray-500 text-sm leading-relaxed mb-8">
-                        <span class="en-content">Established in 2016. Empowering youth to take their next big step. We provide expert training in Japanese to fast-track your journey abroad.</span>
+                        <span class="en-content">Empowering youth to take their next big step. We provide expert training in Japanese to fast-track your journey abroad.</span>
                         <span class="mm-content">၂၀၁၆ မှစ၍ လူငယ်များ၏ အနာဂတ် ခြေလှမ်းသစ်အတွက် Japan ဘာသာစကားများကို အကောင်းဆုံး သင်ကြားပေးနေသော ကျောင်းဖြစ်ပါသည်။</span>
+                        <span class="jp-content">若者が次の大きな一歩を踏み出す力を与えます。日本への旅を早めるための専門的な日本語トレーニングを提供します。</span>
                     </p>
-                    <div class="flex space-x-4">
-                        <a href="https://www.facebook.com/share/1D2ro44sPV/?mibextid=wwXIfr" class="w-10 h-10 rounded-full bg-gray-50 border border-gray-200 flex items-center justify-center text-gray-600 hover:bg-primary-600 hover:text-white hover:border-transparent transition-all shadow-sm">
+                    
+                    <!-- Pro-styled Social Media Buttons in Footer -->
+                    <div class="flex space-x-3">
+                        <a href="https://www.facebook.com/share/1D2ro44sPV/?mibextid=wwXIfr" class="w-10 h-10 rounded-full bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-600 hover:bg-blue-600 hover:text-white hover:border-transparent transition-all shadow-sm">
                             <i class="fa-brands fa-facebook-f"></i>
                         </a>
-                        <a href="mailto:ahnargard2016.jp@gmail.com" class="w-10 h-10 rounded-full bg-gray-50 border border-gray-200 flex items-center justify-center text-gray-600 hover:bg-primary-600 hover:text-white hover:border-transparent transition-all shadow-sm">
-                            <i class="fas fa-envelope"></i>
+                        <a href="viber://contact?number=%2B959254109605" class="w-10 h-10 rounded-full bg-[#7360f2]/10 border border-[#7360f2]/20 flex items-center justify-center text-[#7360f2] hover:bg-[#7360f2] hover:text-white hover:border-transparent transition-all shadow-sm">
+                            <i class="fa-brands fa-viber"></i>
+                        </a>
+                        <a href="https://line.me/ti/p/mUxb-dMWY-" target="_blank" class="w-10 h-10 rounded-full bg-[#00c300]/10 border border-[#00c300]/20 flex items-center justify-center text-[#00c300] hover:bg-[#00c300] hover:text-white hover:border-transparent transition-all shadow-sm">
+                            <i class="fa-brands fa-line text-lg"></i>
+                        </a>
+                        <a href="mailto:ahnargard2016.jp@gmail.com" class="w-10 h-10 rounded-full bg-[#ea4335]/10 border border-[#ea4335]/20 flex items-center justify-center text-[#ea4335] hover:bg-[#ea4335] hover:text-white hover:border-transparent transition-all shadow-sm">
+                            <i class="fa-solid fa-envelope"></i>
                         </a>
                     </div>
                 </div>
 
+                <!-- Column 2: Quick Links (Span 2) -->
                 <div class="lg:col-span-2">
                     <h4 class="font-heading text-lg font-bold mb-6 text-gray-900">
-                        <span class="en-content">Quick Links</span><span class="mm-content">လင့်ခ်များ</span>
+                        <span class="en-content">Quick Links</span>
+                        <span class="mm-content">လင့်ခ်များ</span>
+                        <span class="jp-content">クイックリンク</span>
                     </h4>
                     <ul class="space-y-4 text-sm text-gray-500">
-                        <li><a href="index.html" class="hover:text-primary-600 transition-colors"><span class="en-content">Home</span><span class="mm-content">ပင်မစာမျက်နှာ</span></a></li>
-                        <li><a href="about.html" class="hover:text-primary-600 transition-colors"><span class="en-content">About Us</span><span class="mm-content">ကျောင်းအကြောင်း</span></a></li>
-                        <li><a href="programs.html" class="hover:text-primary-600 transition-colors"><span class="en-content">Our Programs</span><span class="mm-content">သင်တန်းများ</span></a></li>
-                        <li><a href="stories.html" class="hover:text-primary-600 transition-colors"><span class="en-content">Success Stories</span><span class="mm-content">အောင်မြင်မှုများ</span></a></li>
-                        <li><a href="contact.html" class="text-primary-600 font-medium"><span class="en-content">Contact Us</span><span class="mm-content">ဆက်သွယ်ရန်</span></a></li>
+                        <li><a href="index.html" class="hover:text-primary-600 transition-colors"><span class="en-content">Home</span><span class="mm-content">ပင်မစာမျက်နှာ</span><span class="jp-content">ホーム</span></a></li>
+                        <li><a href="about.html" class="hover:text-primary-600 transition-colors"><span class="en-content">About Us</span><span class="mm-content">ကျောင်းအကြောင်း</span><span class="jp-content">学校について</span></a></li>
+                        <li><a href="programs.html" class="hover:text-primary-600 transition-colors"><span class="en-content">Our Programs</span><span class="mm-content">သင်တန်းများ</span><span class="jp-content">コース</span></a></li>
+                        <li><a href="stories.html" class="hover:text-primary-600 transition-colors"><span class="en-content">Success Stories</span><span class="mm-content">အောင်မြင်မှုများ</span><span class="jp-content">成功事例</span></a></li>
+                        <li><a href="contact.html" class="text-primary-600 font-medium"><span class="en-content">Contact Us</span><span class="mm-content">ဆက်သွယ်ရန်</span><span class="jp-content">お問い合わせ</span></a></li>
                     </ul>
                 </div>
 
+                <!-- Column 3: Contact Details (Span 3) -->
                 <div class="lg:col-span-3">
                     <h4 class="font-heading text-lg font-bold mb-6 text-gray-900">
-                        <span class="en-content">Contact Details</span><span class="mm-content">ဆက်သွယ်ရန်</span>
+                        <span class="en-content">Contact Details</span>
+                        <span class="mm-content">ဆက်သွယ်ရန်</span>
+                        <span class="jp-content">連絡先</span>
                     </h4>
                     <ul class="space-y-6 text-sm text-gray-600">
                         <li class="flex items-start">
                             <div class="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center text-primary-600 mr-3 flex-shrink-0 mt-0.5">
                                 <i class="fa-solid fa-location-dot text-xs"></i>
                             </div>
-                            <a href="https://maps.app.goo.gl/icd9FSagsgRAXYUT9" class="leading-relaxed">
+                            <a href="https://maps.app.goo.gl/FmSQuy4M6diQ8CKT8" target="_blank" class="leading-relaxed hover:text-primary-600 transition-colors">
                                 <span class="en-content">No. 445, Myin Taw Thar Main Road,<br>3/Man Pyay Ward, Thaketa Township,<br>Yangon.</span>
                                 <span class="mm-content">အမှတ် (၄၄၅)၊ မြင်တော်သာလမ်းမကြီး၊<br>၃/မာန်ပြေရပ်ကွက်၊ သာကေတမြို့နယ်၊<br>ရန်ကုန်မြို့။</span>
+                                <span class="jp-content">ヤンゴン市タケタ郡区マンピェ地区3<br>ミンタワター本通り 445番地</span>
                             </a>
                         </li>
                         <li class="flex items-start">
@@ -299,18 +435,24 @@
                     </ul>
                 </div>
 
+                <!-- Column 4: Ready to Start Card (Span 3) -->
                 <div class="lg:col-span-3">
                     <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100 shadow-sm">
                         <h4 class="font-heading text-base font-bold mb-3 text-gray-900">
-                            <span class="en-content">Ready to start?</span><span class="mm-content">စုံစမ်းလိုပါသလား?</span>
+                            <span class="en-content">Ready to start?</span>
+                            <span class="mm-content">စုံစမ်းလိုပါသလား?</span>
+                            <span class="jp-content">始める準備はできましたか？</span>
                         </h4>
                         <p class="text-sm text-gray-500 mb-5 leading-relaxed">
                             <span class="en-content">We are ready to guide you to your future in Japan. Call us directly.</span>
                             <span class="mm-content">သင်တန်းအပ်နှံရန်နှင့် အသေးစိတ်သိရှိလိုပါက ဖုန်းဖြင့် တိုက်ရိုက် ဆက်သွယ်နိုင်ပါသည်။</span>
+                            <span class="jp-content">日本での未来をご案内する準備ができています。直接お電話ください。</span>
                         </p>
                         <a href="tel:09254109605" class="w-full bg-primary-900 text-white font-semibold py-3 rounded-lg hover:bg-primary-950 transition-all text-sm shadow-md flex justify-center items-center active:scale-95 gap-2">
                             <i class="fa-solid fa-phone-volume text-sm"></i>
-                            <span class="en-content">Call Us Now</span><span class="mm-content">ဖုန်းဆက်စုံစမ်းမည်</span>
+                            <span class="en-content">Call Us Now</span>
+                            <span class="mm-content">ဖုန်းဆက်စုံစမ်းမည်</span>
+                            <span class="jp-content">今すぐ電話する</span>
                         </a>
                     </div>
                 </div>
@@ -324,26 +466,31 @@
     </footer>
 
     <script>
-        // Language Toggle Logic
+        // 3-Language Toggle Logic (EN -> MM -> JP -> EN)
         function toggleLanguage() {
             const htmlTag = document.documentElement;
-            if (htmlTag.getAttribute('lang') === 'en') {
-                htmlTag.setAttribute('lang', 'mm');
-                localStorage.setItem('preferredLanguage', 'mm');
-            } else {
-                htmlTag.setAttribute('lang', 'en');
-                localStorage.setItem('preferredLanguage', 'en');
+            let currentLang = htmlTag.getAttribute('lang') || 'en';
+            let nextLang = 'en';
+
+            if (currentLang === 'en') {
+                nextLang = 'mm';
+            } else if (currentLang === 'mm') {
+                nextLang = 'jp';
+            } else if (currentLang === 'jp') {
+                nextLang = 'en';
             }
+
+            htmlTag.setAttribute('lang', nextLang);
+            localStorage.setItem('preferredLanguage', nextLang);
         }
 
         document.addEventListener('DOMContentLoaded', () => {
             const savedLang = localStorage.getItem('preferredLanguage');
-            if (savedLang) {
+            if (savedLang && document.documentElement.getAttribute('lang') !== savedLang) {
                 document.documentElement.setAttribute('lang', savedLang);
             }
         });
 
-        // Mobile Menu Logic
         const btn = document.getElementById('mobile-menu-btn');
         const menu = document.getElementById('mobile-menu');
         const icon = btn.querySelector('i');
@@ -354,7 +501,6 @@
             icon.classList.toggle('fa-xmark');
         });
 
-        // Navbar Scroll
         window.addEventListener('scroll', () => {
             const nav = document.getElementById('navbar');
             if (window.scrollY > 20) {

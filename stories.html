@@ -7,19 +7,26 @@
     <!-- Premium SEO & Home Tags -->
     <title>Success Stories - FUTURE Foreign Language School</title>
     <meta name="description" content="View the success stories, COE approvals, and student life at FUTURE Foreign Language School.">
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="icon" href="./img/logo.jpg">
 
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@500;600;700;800&family=Padauk:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Noto+Sans+JP:wght@400;700;900&family=Poppins:wght@500;600;700;800&family=Padauk:wght@400;700&display=swap" rel="stylesheet">
     
     <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Instant Language Loader to prevent flickering -->
+    <script>
+        (function() {
+            const savedLang = localStorage.getItem('preferredLanguage') || 'en';
+            document.documentElement.setAttribute('lang', savedLang);
+        })();
+    </script>
 
     <script>
         tailwind.config = {
@@ -28,6 +35,7 @@
                     fontFamily: {
                         sans: ['Inter', 'Padauk', 'sans-serif'],
                         heading: ['Poppins', 'Padauk', 'sans-serif'],
+                        jp: ['Noto Sans JP', 'sans-serif'],
                     },
                     colors: {
                         primary: {
@@ -64,10 +72,12 @@
         .hidden-item { display: none; opacity: 0; transform: scale(0.9); }
         .active-tab { background-color: #1e3a8a !important; color: white !important; border-color: #1e3a8a !important; }
 
-        /* LANGUAGE SWITCHER CSS LOGIC */
-        :lang(en) .mm-content { display: none !important; }
-        :lang(mm) .en-content { display: none !important; }
-        .en-content, .mm-content { animation: fadeIn 0.4s ease-in-out; }
+        /* 3-LANGUAGE SWITCHER CSS LOGIC */
+        :lang(en) .mm-content, :lang(en) .jp-content { display: none !important; }
+        :lang(mm) .en-content, :lang(mm) .jp-content { display: none !important; }
+        :lang(jp) .en-content, :lang(jp) .mm-content { display: none !important; }
+        
+        .en-content, .mm-content, .jp-content { animation: fadeIn 0.4s ease-in-out; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
@@ -79,7 +89,7 @@
             <div class="flex justify-between items-center h-20">
                 <!-- Brand -->
                 <a href="index.html" class="flex-shrink-0 flex items-center gap-3 group">
-                      <img class="w-16 rounded-lg" src="./img/logo.jpg" alt="">
+                    <img class="w-16 rounded-lg" src="./img/logo.jpg" alt="FUTURE Logo">
                     <div class="flex flex-col">
                         <span class="font-heading font-bold text-xl leading-none text-primary-900 tracking-tight">FUTURE FOREIGN</span>
                         <span class="text-[10px] uppercase font-semibold text-gray-500 tracking-widest mt-1">Language School</span>
@@ -88,18 +98,29 @@
 
                 <!-- Desktop Nav -->
                 <div class="hidden lg:flex items-center space-x-6 xl:space-x-8">
-                    <a href="index.html" class="text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors"><span class="en-content">Home</span><span class="mm-content">ပင်မစာမျက်နှာ</span></a>
-                    <a href="about.html" class="text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors"><span class="en-content">About Us</span><span class="mm-content">ကျောင်းအကြောင်း</span></a>
-                    <a href="programs.html" class="text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors"><span class="en-content">Programs</span><span class="mm-content">သင်တန်းများ</span></a>
-                    <a href="stories.html" class="text-sm font-medium text-primary-600 transition-colors"><span class="en-content">Success Stories</span><span class="mm-content">အောင်မြင်မှုများ</span></a>
-                    <a href="contact.html" class="text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors"><span class="en-content">Contact</span><span class="mm-content">ဆက်သွယ်ရန်</span></a>
+                    <a href="index.html" class="text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors">
+                        <span class="en-content">Home</span><span class="mm-content">ပင်မစာမျက်နှာ</span><span class="jp-content">ホーム</span>
+                    </a>
+                    <a href="about.html" class="text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors">
+                        <span class="en-content">About Us</span><span class="mm-content">ကျောင်းအကြောင်း</span><span class="jp-content">学校について</span>
+                    </a>
+                    <a href="programs.html" class="text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors">
+                        <span class="en-content">Programs</span><span class="mm-content">သင်တန်းများ</span><span class="jp-content">コース</span>
+                    </a>
+                    <a href="stories.html" class="text-sm font-medium text-primary-600 transition-colors">
+                        <span class="en-content">Success Stories</span><span class="mm-content">အောင်မြင်မှုများ</span><span class="jp-content">成功事例</span>
+                    </a>
+                    <a href="contact.html" class="text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors">
+                        <span class="en-content">Contact</span><span class="mm-content">ဆက်သွယ်ရန်</span><span class="jp-content">お問い合わせ</span>
+                    </a>
                     
                     <div class="pl-6 border-l border-gray-200 flex items-center space-x-4">
                         <button onclick="toggleLanguage()" class="flex items-center space-x-2 text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors bg-gray-100 hover:bg-gray-200 px-3 py-1.5 rounded-full">
                             <i class="fa-solid fa-language text-lg text-primary-600"></i>
-                            <span class="en-content">မြန်မာဘာသာ</span><span class="mm-content">English</span>
+                            <span class="en-content">မြန်မာဘာသာ</span>
+                            <span class="mm-content">日本語</span>
+                            <span class="jp-content">English</span>
                         </button>
-                
                     </div>
                 </div>
 
@@ -118,13 +139,20 @@
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="lg:hidden hidden bg-white border-t border-gray-100 shadow-2xl absolute w-full transition-all">
             <div class="px-4 pt-4 pb-8 space-y-2 flex flex-col">
-                <a href="index.html" class="block px-4 py-3 rounded-lg text-base font-medium text-gray-700 hover:bg-primary-50"><span class="en-content">Home</span><span class="mm-content">ပင်မစာမျက်နှာ</span></a>
-                <a href="about.html" class="block px-4 py-3 rounded-lg text-base font-medium text-gray-700 hover:bg-primary-50"><span class="en-content">About Us</span><span class="mm-content">ကျောင်းအကြောင်း</span></a>
-                <a href="programs.html" class="block px-4 py-3 rounded-lg text-base font-medium text-gray-700 hover:bg-primary-50"><span class="en-content">Programs</span><span class="mm-content">သင်တန်းများ</span></a>
-                <a href="stories.html" class="block px-4 py-3 rounded-lg text-base font-medium text-primary-700 bg-primary-50"><span class="en-content">Success Stories</span><span class="mm-content">အောင်မြင်မှုများ</span></a>
-                <a href="contact.html" class="block px-4 py-3 rounded-lg text-base font-medium text-gray-700 hover:bg-primary-50"><span class="en-content">Contact</span><span class="mm-content">ဆက်သွယ်ရန်</span></a>
-                <a href="contact.html" class="block px-4 py-3 mt-4 text-center rounded-lg text-base font-bold text-white bg-primary-600 hover:bg-primary-700">
-                    <span class="en-content">Call Us</span><span class="mm-content">စုံစမ်းမည်</span>
+                <a href="index.html" class="block px-4 py-3 rounded-lg text-base font-medium text-gray-700 hover:bg-primary-50">
+                    <span class="en-content">Home</span><span class="mm-content">ပင်မစာမျက်နှာ</span><span class="jp-content">ホーム</span>
+                </a>
+                <a href="about.html" class="block px-4 py-3 rounded-lg text-base font-medium text-gray-700 hover:bg-primary-50">
+                    <span class="en-content">About Us</span><span class="mm-content">ကျောင်းအကြောင်း</span><span class="jp-content">学校について</span>
+                </a>
+                <a href="programs.html" class="block px-4 py-3 rounded-lg text-base font-medium text-gray-700 hover:bg-primary-50">
+                    <span class="en-content">Programs</span><span class="mm-content">သင်တန်းများ</span><span class="jp-content">コース</span>
+                </a>
+                <a href="stories.html" class="block px-4 py-3 rounded-lg text-base font-medium text-primary-700 bg-primary-50">
+                    <span class="en-content">Success Stories</span><span class="mm-content">အောင်မြင်မှုများ</span><span class="jp-content">成功事例</span>
+                </a>
+                <a href="contact.html" class="block px-4 py-3 rounded-lg text-base font-medium text-gray-700 hover:bg-primary-50">
+                    <span class="en-content">Contact</span><span class="mm-content">ဆက်သွယ်ရန်</span><span class="jp-content">お問い合わせ</span>
                 </a>
             </div>
         </div>
@@ -136,10 +164,12 @@
             <h1 class="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-white leading-[1.2] mb-6 tracking-tight">
                 <span class="en-content">Success <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-blue-100">Stories.</span></span>
                 <span class="mm-content">FUTURE ၏ <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-blue-100">အောင်မြင်မှုများ။</span></span>
+                <span class="jp-content">学生たちの<span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-blue-100">成功事例。</span></span>
             </h1>
             <p class="text-lg text-blue-100/90 max-w-2xl mx-auto leading-relaxed font-light">
                 <span class="en-content">Explore the achievements of our students. From COE approvals to vibrant student life, see the results of dedication and expert guidance.</span>
                 <span class="mm-content">FUTURE ကျောင်းသားများ၏ ဂျပန်နိုင်ငံသို့ အမှန်တကယ် သွားရောက်ခွင့်ရရှိထားသော COE အထောက်အထားများနှင့် ကျောင်းတွင်း လှုပ်ရှားမှုပုံရိပ်များ။</span>
+                <span class="jp-content">学生たちの成果をご覧ください。COE承認から活気ある学生生活まで、献身と専門的な指導の結果をご覧ください。</span>
             </p>
         </div>
     </section>
@@ -151,21 +181,31 @@
             <!-- Filter Controls -->
             <div class="flex flex-wrap justify-center gap-3 mb-12">
                 <button class="filter-btn active-tab px-6 py-2 rounded-full border border-gray-200 bg-white text-gray-700 font-medium text-sm transition-all hover:bg-gray-100" data-filter="all">
-                    <span class="en-content">All Photos</span><span class="mm-content">ဓာတ်ပုံအားလုံး</span>
+                    <span class="en-content">All Photos</span>
+                    <span class="mm-content">ဓာတ်ပုံအားလုံး</span>
+                    <span class="jp-content">すべての写真</span>
                 </button>
                 <button class="filter-btn px-6 py-2 rounded-full border border-gray-200 bg-white text-gray-700 font-medium text-sm transition-all hover:bg-gray-100" data-filter="coe">
-                    <span class="en-content">Approvals</span><span class="mm-content">ဗီဇာအောင်မြင်မှုများ</span>
+                    <span class="en-content">Approvals</span>
+                    <span class="mm-content">ဗီဇာအောင်မြင်မှုများ</span>
+                    <span class="jp-content">ビザ承認</span>
                 </button>
-                <button class="filter-btn px-6 py-2 rounded-full border border-gray-200 bg-white text-gray-700 font-medium text-sm transition-all hover:bg-gray-100" data-filter="life">
-                    <span class="en-content">Student Life</span><span class="mm-content">ကျောင်းတွင်း လှုပ်ရှားမှု</span>
+                <button class="filter-btn px-6 py-2 rounded-full border border-gray-200 bg-white text-gray-700 font-medium text-sm transition-all hover:bg-gray-100" data-filter="life-mm">
+                    <span class="en-content">Myanmar Life</span>
+                    <span class="mm-content">မြန်မာကျောင်းတွင်းလှုပ်ရှားမှု</span>
+                    <span class="jp-content">ミャンマーでの生活</span>
+                </button>
+                <button class="filter-btn px-6 py-2 rounded-full border border-gray-200 bg-white text-gray-700 font-medium text-sm transition-all hover:bg-gray-100" data-filter="life-jp">
+                    <span class="en-content">Japan Life</span>
+                    <span class="mm-content">ဂျပန်ကျောင်းတွင်းလှုပ်ရှားမှု</span>
+                    <span class="jp-content">日本での生活</span>
                 </button>
             </div>
 
             <!-- Masonry Grid -->
             <div class="masonry-grid" id="gallery-container">
                 
-                <!-- ================= COE APPROVALS ================= -->
-                
+                <!-- ================= COE APPROVALS (coe) ================= -->
                 <div class="masonry-item gallery-item coe">
                     <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 group">
                         <div class="relative overflow-hidden">
@@ -214,31 +254,6 @@
                     </div>
                 </div>
 
-                <div class="masonry-item gallery-item coe">
-                    <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 group">
-                        <div class="relative overflow-hidden">
-                            <img src="./img/coe/coe7.jpg" loading="lazy" onerror="this.src='https://placehold.co/600x800/eff6ff/1e3a8a?text=COE+Document'" alt="COE Approval" class="w-full h-auto transform group-hover:scale-105 transition-transform duration-500">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="masonry-item gallery-item coe">
-                    <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 group">
-                        <div class="relative overflow-hidden">
-                            <img src="./img/coe/coe8.jpg" loading="lazy" onerror="this.src='https://placehold.co/600x800/eff6ff/1e3a8a?text=COE+Document'" alt="COE Approval" class="w-full h-auto transform group-hover:scale-105 transition-transform duration-500">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="masonry-item gallery-item coe">
-                    <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 group">
-                        <div class="relative overflow-hidden">
-                            <img src="./img/coe/coe9.jpg" loading="lazy" onerror="this.src='https://placehold.co/600x800/eff6ff/1e3a8a?text=COE+Document'" alt="COE Approval" class="w-full h-auto transform group-hover:scale-105 transition-transform duration-500">
-                        </div>
-                    </div>
-                </div>
-
-
                  <div class="masonry-item gallery-item coe">
                     <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 group">
                         <div class="relative overflow-hidden">
@@ -272,244 +287,240 @@
                 </div>
 
 
-
-                <!-- ================= STUDENT LIFE (DUO) ================= -->
+                <!-- ================= STUDENT LIFE IN MYANMAR (life-mm) ================= -->
                 
-                <div class="masonry-item gallery-item life">
+                <div class="masonry-item gallery-item life-mm">
                     <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 group">
                         <div class="relative overflow-hidden">
-                            <img src="./img/students/duo1.jpg" loading="lazy" onerror="this.src='https://placehold.co/800x600/eff6ff/1e3a8a?text=Student+Life'" alt="Student Life" class="w-full h-auto transform group-hover:scale-105 transition-transform duration-500">
+                            <img src="./img/students/duo1.jpg" loading="lazy" onerror="this.src='https://placehold.co/800x600/eff6ff/1e3a8a?text=Myanmar+Student+Life'" alt="Student Life in Myanmar" class="w-full h-auto transform group-hover:scale-105 transition-transform duration-500">
                             <div class="absolute inset-0 bg-primary-900/10 group-hover:bg-transparent transition-colors duration-300"></div>
                         </div>
                     </div>
                 </div>
 
-                <div class="masonry-item gallery-item life">
+                <div class="masonry-item gallery-item life-mm">
                     <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 group">
                         <div class="relative overflow-hidden">
-                            <img src="./img/students/duo2.jpg" loading="lazy" onerror="this.src='https://placehold.co/800x600/eff6ff/1e3a8a?text=Student+Life'" alt="Student Life" class="w-full h-auto transform group-hover:scale-105 transition-transform duration-500">
+                            <img src="./img/students/duo2.jpg" loading="lazy" onerror="this.src='https://placehold.co/800x600/eff6ff/1e3a8a?text=Myanmar+Student+Life'" alt="Student Life in Myanmar" class="w-full h-auto transform group-hover:scale-105 transition-transform duration-500">
                             <div class="absolute inset-0 bg-primary-900/10 group-hover:bg-transparent transition-colors duration-300"></div>
                         </div>
                     </div>
                 </div>
 
-                <div class="masonry-item gallery-item life">
+                <div class="masonry-item gallery-item life-mm">
                     <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 group">
                         <div class="relative overflow-hidden">
-                            <img src="./img/students/duo3.jpg" loading="lazy" onerror="this.src='https://placehold.co/800x600/eff6ff/1e3a8a?text=Student+Life'" alt="Student Life" class="w-full h-auto transform group-hover:scale-105 transition-transform duration-500">
+                            <img src="./img/students/duo3.jpg" loading="lazy" onerror="this.src='https://placehold.co/800x600/eff6ff/1e3a8a?text=Myanmar+Student+Life'" alt="Student Life in Myanmar" class="w-full h-auto transform group-hover:scale-105 transition-transform duration-500">
                             <div class="absolute inset-0 bg-primary-900/10 group-hover:bg-transparent transition-colors duration-300"></div>
                         </div>
                     </div>
                 </div>
 
-                <!-- ================= STUDENT LIFE (GROUP PHOTOS 1-10) ================= -->
-
-                <div class="masonry-item gallery-item life">
+                <div class="masonry-item gallery-item life-mm">
                     <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 group">
                         <div class="relative overflow-hidden">
-                            <img src="./img/students/gp1.jpg" loading="lazy" onerror="this.src='https://placehold.co/800x600/eff6ff/1e3a8a?text=Student+Life'" alt="Student Life" class="w-full h-auto transform group-hover:scale-105 transition-transform duration-500">
+                            <img src="./img/students/gp1.jpg" loading="lazy" onerror="this.src='https://placehold.co/800x600/eff6ff/1e3a8a?text=Myanmar+Student+Life'" alt="Student Life in Myanmar" class="w-full h-auto transform group-hover:scale-105 transition-transform duration-500">
                             <div class="absolute inset-0 bg-primary-900/10 group-hover:bg-transparent transition-colors duration-300"></div>
                         </div>
                     </div>
                 </div>
 
-                <div class="masonry-item gallery-item life">
+                <div class="masonry-item gallery-item life-mm">
                     <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 group">
                         <div class="relative overflow-hidden">
-                            <img src="./img/students/gp2.jpg" loading="lazy" onerror="this.src='https://placehold.co/800x600/eff6ff/1e3a8a?text=Student+Life'" alt="Student Life" class="w-full h-auto transform group-hover:scale-105 transition-transform duration-500">
+                            <img src="./img/students/gp2.jpg" loading="lazy" onerror="this.src='https://placehold.co/800x600/eff6ff/1e3a8a?text=Myanmar+Student+Life'" alt="Student Life in Myanmar" class="w-full h-auto transform group-hover:scale-105 transition-transform duration-500">
                             <div class="absolute inset-0 bg-primary-900/10 group-hover:bg-transparent transition-colors duration-300"></div>
                         </div>
                     </div>
                 </div>
 
-                <div class="masonry-item gallery-item life">
+                <div class="masonry-item gallery-item life-mm">
                     <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 group">
                         <div class="relative overflow-hidden">
-                            <img src="./img/students/gp3.jpg" loading="lazy" onerror="this.src='https://placehold.co/800x600/eff6ff/1e3a8a?text=Student+Life'" alt="Student Life" class="w-full h-auto transform group-hover:scale-105 transition-transform duration-500">
+                            <img src="./img/students/gp3.jpg" loading="lazy" onerror="this.src='https://placehold.co/800x600/eff6ff/1e3a8a?text=Myanmar+Student+Life'" alt="Student Life in Myanmar" class="w-full h-auto transform group-hover:scale-105 transition-transform duration-500">
                             <div class="absolute inset-0 bg-primary-900/10 group-hover:bg-transparent transition-colors duration-300"></div>
                         </div>
                     </div>
                 </div>
 
-                <div class="masonry-item gallery-item life">
+                <div class="masonry-item gallery-item life-mm">
                     <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 group">
                         <div class="relative overflow-hidden">
-                            <img src="./img/students/gp4.jpg" loading="lazy" onerror="this.src='https://placehold.co/800x600/eff6ff/1e3a8a?text=Student+Life'" alt="Student Life" class="w-full h-auto transform group-hover:scale-105 transition-transform duration-500">
+                            <img src="./img/students/gp4.jpg" loading="lazy" onerror="this.src='https://placehold.co/800x600/eff6ff/1e3a8a?text=Myanmar+Student+Life'" alt="Student Life in Myanmar" class="w-full h-auto transform group-hover:scale-105 transition-transform duration-500">
                             <div class="absolute inset-0 bg-primary-900/10 group-hover:bg-transparent transition-colors duration-300"></div>
                         </div>
                     </div>
                 </div>
 
-                <div class="masonry-item gallery-item life">
+                <div class="masonry-item gallery-item life-mm">
                     <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 group">
                         <div class="relative overflow-hidden">
-                            <img src="./img/students/gp5.jpg" loading="lazy" onerror="this.src='https://placehold.co/800x600/eff6ff/1e3a8a?text=Student+Life'" alt="Student Life" class="w-full h-auto transform group-hover:scale-105 transition-transform duration-500">
+                            <img src="./img/students/gp5.jpg" loading="lazy" onerror="this.src='https://placehold.co/800x600/eff6ff/1e3a8a?text=Myanmar+Student+Life'" alt="Student Life in Myanmar" class="w-full h-auto transform group-hover:scale-105 transition-transform duration-500">
                             <div class="absolute inset-0 bg-primary-900/10 group-hover:bg-transparent transition-colors duration-300"></div>
                         </div>
                     </div>
                 </div>
 
-                <div class="masonry-item gallery-item life">
+                <div class="masonry-item gallery-item life-mm">
                     <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 group">
                         <div class="relative overflow-hidden">
-                            <img src="./img/students/gp6.jpg" loading="lazy" onerror="this.src='https://placehold.co/800x600/eff6ff/1e3a8a?text=Student+Life'" alt="Student Life" class="w-full h-auto transform group-hover:scale-105 transition-transform duration-500">
+                            <img src="./img/students/gp6.jpg" loading="lazy" onerror="this.src='https://placehold.co/800x600/eff6ff/1e3a8a?text=Myanmar+Student+Life'" alt="Student Life in Myanmar" class="w-full h-auto transform group-hover:scale-105 transition-transform duration-500">
                             <div class="absolute inset-0 bg-primary-900/10 group-hover:bg-transparent transition-colors duration-300"></div>
                         </div>
                     </div>
                 </div>
 
-                <div class="masonry-item gallery-item life">
+                <div class="masonry-item gallery-item life-mm">
                     <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 group">
                         <div class="relative overflow-hidden">
-                            <img src="./img/students/gp7.jpg" loading="lazy" onerror="this.src='https://placehold.co/800x600/eff6ff/1e3a8a?text=Student+Life'" alt="Student Life" class="w-full h-auto transform group-hover:scale-105 transition-transform duration-500">
+                            <img src="./img/students/gp7.jpg" loading="lazy" onerror="this.src='https://placehold.co/800x600/eff6ff/1e3a8a?text=Myanmar+Student+Life'" alt="Student Life in Myanmar" class="w-full h-auto transform group-hover:scale-105 transition-transform duration-500">
                             <div class="absolute inset-0 bg-primary-900/10 group-hover:bg-transparent transition-colors duration-300"></div>
                         </div>
                     </div>
                 </div>
 
-                <div class="masonry-item gallery-item life">
+                <div class="masonry-item gallery-item life-mm">
                     <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 group">
                         <div class="relative overflow-hidden">
-                            <img src="./img/students/gp8.jpg" loading="lazy" onerror="this.src='https://placehold.co/800x600/eff6ff/1e3a8a?text=Student+Life'" alt="Student Life" class="w-full h-auto transform group-hover:scale-105 transition-transform duration-500">
+                            <img src="./img/students/gp8.jpg" loading="lazy" onerror="this.src='https://placehold.co/800x600/eff6ff/1e3a8a?text=Myanmar+Student+Life'" alt="Student Life in Myanmar" class="w-full h-auto transform group-hover:scale-105 transition-transform duration-500">
                             <div class="absolute inset-0 bg-primary-900/10 group-hover:bg-transparent transition-colors duration-300"></div>
                         </div>
                     </div>
                 </div>
 
-                <div class="masonry-item gallery-item life">
+                <div class="masonry-item gallery-item life-mm">
                     <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 group">
                         <div class="relative overflow-hidden">
-                            <img src="./img/students/gp9.jpg" loading="lazy" onerror="this.src='https://placehold.co/800x600/eff6ff/1e3a8a?text=Student+Life'" alt="Student Life" class="w-full h-auto transform group-hover:scale-105 transition-transform duration-500">
+                            <img src="./img/students/gp9.jpg" loading="lazy" onerror="this.src='https://placehold.co/800x600/eff6ff/1e3a8a?text=Myanmar+Student+Life'" alt="Student Life in Myanmar" class="w-full h-auto transform group-hover:scale-105 transition-transform duration-500">
                             <div class="absolute inset-0 bg-primary-900/10 group-hover:bg-transparent transition-colors duration-300"></div>
                         </div>
                     </div>
                 </div>
 
-                <div class="masonry-item gallery-item life">
+                <div class="masonry-item gallery-item life-mm">
                     <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 group">
                         <div class="relative overflow-hidden">
-                            <img src="./img/students/gp10.jpg" loading="lazy" onerror="this.src='https://placehold.co/800x600/eff6ff/1e3a8a?text=Student+Life'" alt="Student Life" class="w-full h-auto transform group-hover:scale-105 transition-transform duration-500">
+                            <img src="./img/students/gp10.jpg" loading="lazy" onerror="this.src='https://placehold.co/800x600/eff6ff/1e3a8a?text=Myanmar+Student+Life'" alt="Student Life in Myanmar" class="w-full h-auto transform group-hover:scale-105 transition-transform duration-500">
                             <div class="absolute inset-0 bg-primary-900/10 group-hover:bg-transparent transition-colors duration-300"></div>
                         </div>
                     </div>
                 </div>
 
-                <!-- ================= STUDENT LIFE (GROUP PHOTOS 11-20) ================= -->
 
-                <div class="masonry-item gallery-item life">
+                <!-- ================= STUDENT LIFE IN JAPAN (life-jp) ================= -->
+
+                <div class="masonry-item gallery-item life-jp">
                     <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 group">
                         <div class="relative overflow-hidden">
-                            <img src="./img/students/gp11.jpg" loading="lazy" onerror="this.src='https://placehold.co/800x600/eff6ff/1e3a8a?text=Student+Life'" alt="Student Life" class="w-full h-auto transform group-hover:scale-105 transition-transform duration-500">
+                            <img src="./img/students/gp11.jpg" loading="lazy" onerror="this.src='https://placehold.co/800x600/eff6ff/1e3a8a?text=Japan+Student+Life'" alt="Student Life in Japan" class="w-full h-auto transform group-hover:scale-105 transition-transform duration-500">
                             <div class="absolute inset-0 bg-primary-900/10 group-hover:bg-transparent transition-colors duration-300"></div>
                         </div>
                     </div>
                 </div>
 
-                <div class="masonry-item gallery-item life">
+                <div class="masonry-item gallery-item life-jp">
                     <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 group">
                         <div class="relative overflow-hidden">
-                            <img src="./img/students/gp12.jpg" loading="lazy" onerror="this.src='https://placehold.co/800x600/eff6ff/1e3a8a?text=Student+Life'" alt="Student Life" class="w-full h-auto transform group-hover:scale-105 transition-transform duration-500">
+                            <img src="./img/students/gp12.jpg" loading="lazy" onerror="this.src='https://placehold.co/800x600/eff6ff/1e3a8a?text=Japan+Student+Life'" alt="Student Life in Japan" class="w-full h-auto transform group-hover:scale-105 transition-transform duration-500">
                             <div class="absolute inset-0 bg-primary-900/10 group-hover:bg-transparent transition-colors duration-300"></div>
                         </div>
                     </div>
                 </div>
 
-                <div class="masonry-item gallery-item life">
+                <div class="masonry-item gallery-item life-jp">
                     <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 group">
                         <div class="relative overflow-hidden">
-                            <img src="./img/students/gp13.jpg" loading="lazy" onerror="this.src='https://placehold.co/800x600/eff6ff/1e3a8a?text=Student+Life'" alt="Student Life" class="w-full h-auto transform group-hover:scale-105 transition-transform duration-500">
+                            <img src="./img/students/gp13.jpg" loading="lazy" onerror="this.src='https://placehold.co/800x600/eff6ff/1e3a8a?text=Japan+Student+Life'" alt="Student Life in Japan" class="w-full h-auto transform group-hover:scale-105 transition-transform duration-500">
                             <div class="absolute inset-0 bg-primary-900/10 group-hover:bg-transparent transition-colors duration-300"></div>
                         </div>
                     </div>
                 </div>
 
-                <div class="masonry-item gallery-item life">
+                <div class="masonry-item gallery-item life-jp">
                     <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 group">
                         <div class="relative overflow-hidden">
-                            <img src="./img/students/gp14.jpg" loading="lazy" onerror="this.src='https://placehold.co/800x600/eff6ff/1e3a8a?text=Student+Life'" alt="Student Life" class="w-full h-auto transform group-hover:scale-105 transition-transform duration-500">
+                            <img src="./img/students/gp14.jpg" loading="lazy" onerror="this.src='https://placehold.co/800x600/eff6ff/1e3a8a?text=Japan+Student+Life'" alt="Student Life in Japan" class="w-full h-auto transform group-hover:scale-105 transition-transform duration-500">
                             <div class="absolute inset-0 bg-primary-900/10 group-hover:bg-transparent transition-colors duration-300"></div>
                         </div>
                     </div>
                 </div>
 
-                <div class="masonry-item gallery-item life">
+                <div class="masonry-item gallery-item life-jp">
                     <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 group">
                         <div class="relative overflow-hidden">
-                            <img src="./img/students/gp15.jpg" loading="lazy" onerror="this.src='https://placehold.co/800x600/eff6ff/1e3a8a?text=Student+Life'" alt="Student Life" class="w-full h-auto transform group-hover:scale-105 transition-transform duration-500">
+                            <img src="./img/students/gp15.jpg" loading="lazy" onerror="this.src='https://placehold.co/800x600/eff6ff/1e3a8a?text=Japan+Student+Life'" alt="Student Life in Japan" class="w-full h-auto transform group-hover:scale-105 transition-transform duration-500">
                             <div class="absolute inset-0 bg-primary-900/10 group-hover:bg-transparent transition-colors duration-300"></div>
                         </div>
                     </div>
                 </div>
 
-                <div class="masonry-item gallery-item life">
+                <div class="masonry-item gallery-item life-jp">
                     <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 group">
                         <div class="relative overflow-hidden">
-                            <img src="./img/students/gp16.jpg" loading="lazy" onerror="this.src='https://placehold.co/800x600/eff6ff/1e3a8a?text=Student+Life'" alt="Student Life" class="w-full h-auto transform group-hover:scale-105 transition-transform duration-500">
+                            <img src="./img/students/gp16.jpg" loading="lazy" onerror="this.src='https://placehold.co/800x600/eff6ff/1e3a8a?text=Japan+Student+Life'" alt="Student Life in Japan" class="w-full h-auto transform group-hover:scale-105 transition-transform duration-500">
                             <div class="absolute inset-0 bg-primary-900/10 group-hover:bg-transparent transition-colors duration-300"></div>
                         </div>
                     </div>
                 </div>
 
-                <div class="masonry-item gallery-item life">
+                <div class="masonry-item gallery-item life-jp">
                     <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 group">
                         <div class="relative overflow-hidden">
-                            <img src="./img/students/gp17.jpg" loading="lazy" onerror="this.src='https://placehold.co/800x600/eff6ff/1e3a8a?text=Student+Life'" alt="Student Life" class="w-full h-auto transform group-hover:scale-105 transition-transform duration-500">
+                            <img src="./img/students/gp17.jpg" loading="lazy" onerror="this.src='https://placehold.co/800x600/eff6ff/1e3a8a?text=Japan+Student+Life'" alt="Student Life in Japan" class="w-full h-auto transform group-hover:scale-105 transition-transform duration-500">
                             <div class="absolute inset-0 bg-primary-900/10 group-hover:bg-transparent transition-colors duration-300"></div>
                         </div>
                     </div>
                 </div>
 
-                <div class="masonry-item gallery-item life">
+                <div class="masonry-item gallery-item life-jp">
                     <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 group">
                         <div class="relative overflow-hidden">
-                            <img src="./img/students/gp18.jpg" loading="lazy" onerror="this.src='https://placehold.co/800x600/eff6ff/1e3a8a?text=Student+Life'" alt="Student Life" class="w-full h-auto transform group-hover:scale-105 transition-transform duration-500">
+                            <img src="./img/students/gp18.jpg" loading="lazy" onerror="this.src='https://placehold.co/800x600/eff6ff/1e3a8a?text=Japan+Student+Life'" alt="Student Life in Japan" class="w-full h-auto transform group-hover:scale-105 transition-transform duration-500">
                             <div class="absolute inset-0 bg-primary-900/10 group-hover:bg-transparent transition-colors duration-300"></div>
                         </div>
                     </div>
                 </div>
 
-                <div class="masonry-item gallery-item life">
+                <div class="masonry-item gallery-item life-jp">
                     <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 group">
                         <div class="relative overflow-hidden">
-                            <img src="./img/students/gp19.jpg" loading="lazy" onerror="this.src='https://placehold.co/800x600/eff6ff/1e3a8a?text=Student+Life'" alt="Student Life" class="w-full h-auto transform group-hover:scale-105 transition-transform duration-500">
+                            <img src="./img/students/gp19.jpg" loading="lazy" onerror="this.src='https://placehold.co/800x600/eff6ff/1e3a8a?text=Japan+Student+Life'" alt="Student Life in Japan" class="w-full h-auto transform group-hover:scale-105 transition-transform duration-500">
                             <div class="absolute inset-0 bg-primary-900/10 group-hover:bg-transparent transition-colors duration-300"></div>
                         </div>
                     </div>
                 </div>
 
-                <div class="masonry-item gallery-item life">
+                <div class="masonry-item gallery-item life-jp">
                     <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 group">
                         <div class="relative overflow-hidden">
-                            <img src="./img/students/gp20.jpg" loading="lazy" onerror="this.src='https://placehold.co/800x600/eff6ff/1e3a8a?text=Student+Life'" alt="Student Life" class="w-full h-auto transform group-hover:scale-105 transition-transform duration-500">
+                            <img src="./img/students/gp20.jpg" loading="lazy" onerror="this.src='https://placehold.co/800x600/eff6ff/1e3a8a?text=Japan+Student+Life'" alt="Student Life in Japan" class="w-full h-auto transform group-hover:scale-105 transition-transform duration-500">
                             <div class="absolute inset-0 bg-primary-900/10 group-hover:bg-transparent transition-colors duration-300"></div>
                         </div>
                     </div>
                 </div>
 
-                <div class="masonry-item gallery-item life">
+                <div class="masonry-item gallery-item life-jp">
                     <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 group">
                         <div class="relative overflow-hidden">
-                            <img src="./img/students/gp21.jpg" loading="lazy" onerror="this.src='https://placehold.co/800x600/eff6ff/1e3a8a?text=Student+Life'" alt="Student Life" class="w-full h-auto transform group-hover:scale-105 transition-transform duration-500">
+                            <img src="./img/students/gp21.jpg" loading="lazy" onerror="this.src='https://placehold.co/800x600/eff6ff/1e3a8a?text=Japan+Student+Life'" alt="Student Life in Japan" class="w-full h-auto transform group-hover:scale-105 transition-transform duration-500">
                             <div class="absolute inset-0 bg-primary-900/10 group-hover:bg-transparent transition-colors duration-300"></div>
                         </div>
                     </div>
                 </div>
 
-                <!-- ================= STUDENT LIFE (SOLO PHOTOS) ================= -->
-                
-                <div class="masonry-item gallery-item life">
+                <div class="masonry-item gallery-item life-jp">
                     <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 group">
                         <div class="relative overflow-hidden">
-                            <img src="./img/students/solo1.jpg" loading="lazy" onerror="this.src='https://placehold.co/800x600/eff6ff/1e3a8a?text=Student+Life'" alt="Student Life" class="w-full h-auto transform group-hover:scale-105 transition-transform duration-500">
+                            <img src="./img/students/solo1.jpg" loading="lazy" onerror="this.src='https://placehold.co/800x600/eff6ff/1e3a8a?text=Japan+Student+Life'" alt="Student Life in Japan" class="w-full h-auto transform group-hover:scale-105 transition-transform duration-500">
                             <div class="absolute inset-0 bg-primary-900/10 group-hover:bg-transparent transition-colors duration-300"></div>
                         </div>
                     </div>
                 </div>
 
-                <div class="masonry-item gallery-item life">
+                <div class="masonry-item gallery-item life-jp">
                     <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 group">
                         <div class="relative overflow-hidden">
-                            <img src="./img/students/solo2.jpg" loading="lazy" onerror="this.src='https://placehold.co/800x600/eff6ff/1e3a8a?text=Student+Life'" alt="Student Life" class="w-full h-auto transform group-hover:scale-105 transition-transform duration-500">
+                            <img src="./img/students/solo2.jpg" loading="lazy" onerror="this.src='https://placehold.co/800x600/eff6ff/1e3a8a?text=Japan+Student+Life'" alt="Student Life in Japan" class="w-full h-auto transform group-hover:scale-105 transition-transform duration-500">
                             <div class="absolute inset-0 bg-primary-900/10 group-hover:bg-transparent transition-colors duration-300"></div>
                         </div>
                     </div>
@@ -524,55 +535,71 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 mb-16">
                 
+                <!-- Col 1: Brand -->
                 <div class="lg:col-span-4 pr-0 lg:pr-8">
                     <div class="flex items-center gap-3 mb-6">
-                        
-                    <img class="w-16 rounded-lg" src="./img/logo.jpg" alt="">
-                    <div class="flex flex-col">
-                        <span class="font-heading font-bold text-xl leading-none text-primary-900 tracking-tight">FUTURE FOREIGN</span>
-                        <span class="text-[10px] uppercase font-semibold text-gray-500 tracking-widest mt-1">Language School</span>
-                    </div>
-
+                        <a href="index.html" class="flex-shrink-0 flex items-center gap-3 group">
+                            <img class="w-16 rounded-lg" src="./img/logo.jpg" alt="FUTURE Logo">
+                            <div class="flex flex-col">
+                                <span class="font-heading font-bold text-xl leading-none text-primary-900 tracking-tight">FUTURE FOREIGN</span>
+                                <span class="text-[10px] uppercase font-semibold text-gray-500 tracking-widest mt-1">Language School</span>
+                            </div>
+                        </a>
                     </div>
                     <p class="text-gray-500 text-sm leading-relaxed mb-8">
-                        <span class="en-content">Established in 2016. Empowering youth to take their next big step. We provide expert training in Japanese to fast-track your journey abroad.</span>
+                        <span class="en-content">Empowering youth to take their next big step. We provide expert training in Japanese to fast-track your journey abroad.</span>
                         <span class="mm-content">၂၀၁၆ မှစ၍ လူငယ်များ၏ အနာဂတ် ခြေလှမ်းသစ်အတွက် Japan ဘာသာစကားများကို အကောင်းဆုံး သင်ကြားပေးနေသော ကျောင်းဖြစ်ပါသည်။</span>
+                        <span class="jp-content">若者が次の大きな一歩を踏み出す力を与えます。日本への旅を早めるための専門的な日本語トレーニングを提供します。</span>
                     </p>
-                   <div class="flex space-x-4">
-                        <a href="https://www.facebook.com/share/1D2ro44sPV/?mibextid=wwXIfr" class="w-10 h-10 rounded-full bg-gray-50 border border-gray-200 flex items-center justify-center text-gray-600 hover:bg-primary-600 hover:text-white hover:border-transparent transition-all shadow-sm">
+                    
+                    <div class="flex flex-wrap gap-4">
+                        <a href="https://www.facebook.com/share/1D2ro44sPV/?mibextid=wwXIfr" class="w-10 h-10 rounded-full bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-600 hover:bg-blue-600 hover:text-white hover:border-transparent transition-all shadow-sm">
                             <i class="fa-brands fa-facebook-f"></i>
                         </a>
-                        <a href="mailto:ahnargard2016.jp@gmail.com" class="w-10 h-10 rounded-full bg-gray-50 border border-gray-200 flex items-center justify-center text-gray-600 hover:bg-primary-600 hover:text-white hover:border-transparent transition-all shadow-sm">
+                        <a href="viber://chat?number=%2B959254109605" class="w-10 h-10 rounded-full bg-purple-50 border border-purple-100 flex items-center justify-center text-purple-600 hover:bg-purple-600 hover:text-white hover:border-transparent transition-all shadow-sm">
+                            <i class="fa-brands fa-viber"></i>
+                        </a>
+                        <a href="https://line.me/ti/p/mUxb-dMWY-" class="w-10 h-10 rounded-full bg-green-50 border border-green-100 flex items-center justify-center text-green-600 hover:bg-[#06c755] hover:text-white hover:border-transparent transition-all shadow-sm">
+                            <i class="fa-brands fa-line text-lg"></i>
+                        </a>
+                        <a href="mailto:ahnargard2016.jp@gmail.com" class="w-10 h-10 rounded-full bg-red-50 border border-red-100 flex items-center justify-center text-red-500 hover:bg-red-500 hover:text-white hover:border-transparent transition-all shadow-sm">
                             <i class="fas fa-envelope"></i>
                         </a>
                     </div>
                 </div>
 
+                <!-- Col 2: Quick Links -->
                 <div class="lg:col-span-2">
                     <h4 class="font-heading text-lg font-bold mb-6 text-gray-900">
-                        <span class="en-content">Quick Links</span><span class="mm-content">လင့်ခ်များ</span>
+                        <span class="en-content">Quick Links</span>
+                        <span class="mm-content">လင့်ခ်များ</span>
+                        <span class="jp-content">リンク</span>
                     </h4>
                     <ul class="space-y-4 text-sm text-gray-500">
-                        <li><a href="index.html" class="hover:text-primary-600 transition-colors"><span class="en-content">Home</span><span class="mm-content">ပင်မစာမျက်နှာ</span></a></li>
-                        <li><a href="about.html" class="hover:text-primary-600 transition-colors"><span class="en-content">About Us</span><span class="mm-content">ကျောင်းအကြောင်း</span></a></li>
-                        <li><a href="programs.html" class="hover:text-primary-600 transition-colors"><span class="en-content">Our Programs</span><span class="mm-content">သင်တန်းများ</span></a></li>
-                        <li><a href="stories.html" class="text-primary-600 font-medium"><span class="en-content">Success Stories</span><span class="mm-content">အောင်မြင်မှုများ</span></a></li>
-                        <li><a href="contact.html" class="hover:text-primary-600 transition-colors"><span class="en-content">Contact Us</span><span class="mm-content">ဆက်သွယ်ရန်</span></a></li>
+                        <li><a href="index.html" class="hover:text-primary-600 transition-colors"><span class="en-content">Home</span><span class="mm-content">ပင်မစာမျက်နှာ</span><span class="jp-content">ホーム</span></a></li>
+                        <li><a href="about.html" class="hover:text-primary-600 transition-colors"><span class="en-content">About Us</span><span class="mm-content">ကျောင်းအကြောင်း</span><span class="jp-content">学校について</span></a></li>
+                        <li><a href="programs.html" class="hover:text-primary-600 transition-colors"><span class="en-content">Our Programs</span><span class="mm-content">သင်တန်းများ</span><span class="jp-content">コース</span></a></li>
+                        <li><a href="stories.html" class="text-primary-600 font-medium"><span class="en-content">Success Stories</span><span class="mm-content">အောင်မြင်မှုများ</span><span class="jp-content">成功事例</span></a></li>
+                        <li><a href="contact.html" class="hover:text-primary-600 transition-colors"><span class="en-content">Contact Us</span><span class="mm-content">ဆက်သွယ်ရန်</span><span class="jp-content">お問い合わせ</span></a></li>
                     </ul>
                 </div>
 
+                <!-- Col 3: Contact Info -->
                 <div class="lg:col-span-3">
                     <h4 class="font-heading text-lg font-bold mb-6 text-gray-900">
-                        <span class="en-content">Contact Details</span><span class="mm-content">ဆက်သွယ်ရန်</span>
+                        <span class="en-content">Contact Details</span>
+                        <span class="mm-content">ဆက်သွယ်ရန်</span>
+                        <span class="jp-content">連絡先</span>
                     </h4>
-                    <ul class="space-y-6 text-sm text-gray-600">
+                    <ul class="space-y-6 text-sm text-gray-600 mb-8">
                         <li class="flex items-start">
                             <div class="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center text-primary-600 mr-3 flex-shrink-0 mt-0.5">
                                 <i class="fa-solid fa-location-dot text-xs"></i>
                             </div>
-                             <a href="https://maps.app.goo.gl/icd9FSagsgRAXYUT9" class="leading-relaxed">
+                            <a href="https://maps.app.goo.gl/icd9FSagsgRAXYUT9" class="leading-relaxed hover:text-primary-600 transition-colors">
                                 <span class="en-content">No. 445, Myin Taw Thar Main Road,<br>3/Man Pyay Ward, Thaketa Township,<br>Yangon.</span>
                                 <span class="mm-content">အမှတ် (၄၄၅)၊ မြင်တော်သာလမ်းမကြီး၊<br>၃/မာန်ပြေရပ်ကွက်၊ သာကေတမြို့နယ်၊<br>ရန်ကုန်မြို့။</span>
+                                <span class="jp-content">ヤンゴン市タケタ郡区マンピェ地区3<br>ミンタワター本通り 445番地</span>
                             </a>
                         </li>
                         <li class="flex items-start">
@@ -588,18 +615,24 @@
                     </ul>
                 </div>
 
+                <!-- Col 4: Call to Action -->
                 <div class="lg:col-span-3">
-                    <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100 shadow-sm">
+                    <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100 shadow-sm h-full flex flex-col justify-center">
                         <h4 class="font-heading text-base font-bold mb-3 text-gray-900">
-                            <span class="en-content">Ready to start?</span><span class="mm-content">စုံစမ်းလိုပါသလား?</span>
+                            <span class="en-content">Ready to start?</span>
+                            <span class="mm-content">စုံစမ်းလိုပါသလား?</span>
+                            <span class="jp-content">始める準備はできましたか？</span>
                         </h4>
                         <p class="text-sm text-gray-500 mb-5 leading-relaxed">
                             <span class="en-content">We are ready to guide you to your future in Japan. Call us directly.</span>
                             <span class="mm-content">သင်တန်းအပ်နှံရန်နှင့် အသေးစိတ်သိရှိလိုပါက ဖုန်းဖြင့် တိုက်ရိုက် ဆက်သွယ်နိုင်ပါသည်။</span>
+                            <span class="jp-content">日本での未来をご案内する準備ができています。直接お電話ください。</span>
                         </p>
-                        <a href="contact.html" class="w-full bg-primary-900 text-white font-semibold py-3 rounded-lg hover:bg-primary-950 transition-all text-sm shadow-md flex justify-center items-center active:scale-95 gap-2">
+                        <a href="contact.html" class="w-full bg-primary-900 text-white font-semibold py-3 rounded-lg hover:bg-primary-950 transition-all text-sm shadow-md flex justify-center items-center active:scale-95 gap-2 mt-auto">
                             <i class="fa-solid fa-phone-volume text-sm"></i>
-                            <span class="en-content">Call Us Now</span><span class="mm-content">ဖုန်းဆက်စုံစမ်းမည်</span>
+                            <span class="en-content">Call Us Now</span>
+                            <span class="mm-content">ဖုန်းဆက်စုံစမ်းမည်</span>
+                            <span class="jp-content">今すぐ電話する</span>
                         </a>
                     </div>
                 </div>
@@ -613,21 +646,28 @@
     </footer>
 
     <script>
-        // Language Toggle Logic
+        // 3-Language Toggle Logic (EN -> MM -> JP -> EN)
         function toggleLanguage() {
             const htmlTag = document.documentElement;
-            if (htmlTag.getAttribute('lang') === 'en') {
-                htmlTag.setAttribute('lang', 'mm');
-                localStorage.setItem('preferredLanguage', 'mm');
-            } else {
-                htmlTag.setAttribute('lang', 'en');
-                localStorage.setItem('preferredLanguage', 'en');
+            let currentLang = htmlTag.getAttribute('lang') || 'en';
+            let nextLang = 'en';
+
+            if (currentLang === 'en') {
+                nextLang = 'mm';
+            } else if (currentLang === 'mm') {
+                nextLang = 'jp';
+            } else if (currentLang === 'jp') {
+                nextLang = 'en';
             }
+
+            htmlTag.setAttribute('lang', nextLang);
+            localStorage.setItem('preferredLanguage', nextLang);
         }
 
+        // Initialize Language on DOM Load
         document.addEventListener('DOMContentLoaded', () => {
             const savedLang = localStorage.getItem('preferredLanguage');
-            if (savedLang) {
+            if (savedLang && document.documentElement.getAttribute('lang') !== savedLang) {
                 document.documentElement.setAttribute('lang', savedLang);
             }
         });
